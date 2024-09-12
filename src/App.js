@@ -1,11 +1,45 @@
 import React from 'react';
 import BurgerMenu from './BurgerMenu';
 
+export function Component() {
+  const cardData = [
+    {
+      title: "Web Development",
+      subtitle: "Crafting Digital Experiences",
+      content: "I create responsive, user-friendly websites using modern technologies. From concept to deployment, I ensure seamless functionality and engaging interfaces that captivate users and drive business growth."
+    },
+    {
+      title: "UI/UX Design",
+      subtitle: "Enhancing User Interactions",
+      content: "I design intuitive and visually appealing user interfaces. By focusing on user experience, I create designs that are not only aesthetically pleasing but also functional and easy to navigate."
+    },
+    {
+      title: "Mobile App Development",
+      subtitle: "Building for the Small Screen",
+      content: "I develop cross-platform mobile applications that work seamlessly on iOS and Android. Using React Native, I create efficient, feature-rich apps that provide a native-like experience to users."
+    }
+  ];
+
+  return (
+    <>
+      {cardData.map((card, index) => (
+        <div key={index} className="bg-primary-100 border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden">
+          <div className="p-6">
+            <h3 className="text-normal text-primary font-source-code-pro font-semibold mb-2">{card.title}</h3>
+            <h1 className="text-2xl  text-white text-opacity-90 mb-4">{card.subtitle}</h1>
+            <p className="text-sm text-white text-opacity-70">{card.content}</p>
+          </div>
+        </div>
+      ))}</>
+  );
+}
+
+
 function App() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div
-        className="absolute top-0 right-0 -mt-[0px] -mr-[100px] w-[890px] h-[1673px] bg-no-repeat bg-right-top z-0 opacity-30 lg:opacity-100"
+        className="absolute top-0 right-0 -mt-[0px] -mr-[0px] w-[890px] h-[1673px] bg-no-repeat bg-right-top z-0 opacity-30 lg:opacity-100"
         style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/polygons.svg)` }}
       ></div>
       <BurgerMenu />
@@ -68,6 +102,12 @@ function App() {
                 </button>
               </div>
             </div>
+          </div>
+        </section>
+        <section className="py-16 px-4 max-w-7xl mx-auto">
+          <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Component/>
           </div>
         </section>
       </main>
