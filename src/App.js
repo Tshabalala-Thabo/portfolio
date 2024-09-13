@@ -94,51 +94,51 @@ export function ProfessionalSkills() {
 
 // Sample project data with descriptions and links
 const projects = [
-  { 
-    id: 1, 
-    title: 'E-commerce Platform', 
-    category: 'WEB-APP', 
-    image: '/placeholder.svg?height=200&width=300',
+  {
+    id: 1,
+    title: 'E-commerce Platform',
+    category: 'WEB-APP',
+    image: '/images/tmsystem.png',
     description: 'A full-featured e-commerce platform with product management, shopping cart, and secure checkout.',
     link: '/projects/e-commerce-platform'
   },
-  { 
-    id: 2, 
-    title: 'Fitness Tracker App', 
-    category: 'MOBILE-APP', 
-    image: '/placeholder.svg?height=200&width=300',
+  {
+    id: 2,
+    title: 'Fitness Tracker App',
+    category: 'MOBILE-APP',
+    image: '/images/tmsystem.png',
     description: 'Mobile app for tracking workouts, nutrition, and personal fitness goals with data visualization.',
     link: '/projects/fitness-tracker-app'
   },
-  { 
-    id: 3, 
-    title: 'Corporate Website', 
-    category: 'WEBSITE', 
-    image: '/placeholder.svg?height=200&width=300',
+  {
+    id: 3,
+    title: 'Corporate Website',
+    category: 'WEBSITE',
+    image: '/images/tmsystem.png',
     description: 'Responsive corporate website with modern design, showcasing company services and portfolio.',
     link: '/projects/corporate-website'
   },
-  { 
-    id: 4, 
-    title: 'Tech Startup Logo', 
-    category: 'LOGO', 
-    image: '/placeholder.svg?height=200&width=300',
+  {
+    id: 4,
+    title: 'Tech Startup Logo',
+    category: 'LOGO',
+    image: '/images/tmsystem.png',
     description: 'Minimalist and memorable logo design for a cutting-edge tech startup in the AI industry.',
     link: '/projects/tech-startup-logo'
   },
-  { 
-    id: 5, 
-    title: 'Social Media Dashboard', 
-    category: 'WEB-APP', 
-    image: '/placeholder.svg?height=200&width=300',
+  {
+    id: 5,
+    title: 'Social Media Dashboard',
+    category: 'WEB-APP',
+    image: '/images/tmsystem.png',
     description: 'Comprehensive dashboard for managing multiple social media accounts with analytics and scheduling.',
     link: '/projects/social-media-dashboard'
   },
-  { 
-    id: 6, 
-    title: 'Restaurant Booking App', 
-    category: 'MOBILE-APP', 
-    image: '/placeholder.svg?height=200&width=300',
+  {
+    id: 6,
+    title: 'Restaurant Booking App',
+    category: 'MOBILE-APP',
+    image: '/images/tmsystem.png',
     description: 'User-friendly mobile app for booking restaurant tables, viewing menus, and managing reservations.',
     link: '/projects/restaurant-booking-app'
   },
@@ -149,15 +149,15 @@ const categories = ['ALL', 'WEB-APP', 'MOBILE-APP', 'WEBSITE', 'LOGO']
 export function PortfolioSection() {
   const [activeTab, setActiveTab] = useState('ALL')
 
-  const filteredProjects = activeTab === 'ALL' 
-    ? projects 
+  const filteredProjects = activeTab === 'ALL'
+    ? projects
     : projects.filter(project => project.category === activeTab)
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">My Portfolio</h2>
-        
+        <h2 className="text-3xl font-bold text-center uppercase mb-8">My Portfolio</h2>
+
         <Tab.Group>
           <Tab.List className="flex justify-center space-x-1 mb-8">
             {categories.map((category) => (
@@ -165,8 +165,8 @@ export function PortfolioSection() {
                 key={category}
                 className={({ selected }) =>
                   `px-4 py-2 text-sm font-medium leading-5 transition-colors duration-200
-                  ${selected 
-                    ? 'text-primary border-b-2 border-primary'
+                  ${selected
+                    ? 'text-primary'
                     : 'text-muted-foreground hover:text-primary'
                   }`
                 }
@@ -178,7 +178,7 @@ export function PortfolioSection() {
           </Tab.List>
         </Tab.Group>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           layout
         >
@@ -191,17 +191,22 @@ export function PortfolioSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className="bg-card rounded-lg shadow-md overflow-hidden flex flex-col"
+                className="bg-primary-100 relative border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden flex flex-col"
               >
-                <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                <div
+                  className="absolute bottom-0 right-0 -mr-[0px] w-[200px] h-[200px] bg-no-repeat bg-right-bottom z-0 opacity-80"
+                  style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/card-polygons.svg)` }}
+                ></div>
+                <img src={project.image} alt={project.title} className="w-full h-auto object-cover z-10" />
                 <div className="p-4 flex-grow flex flex-col">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4 flex-grow">{project.description}</p>
+                  <span className="inline-block bg-muted rounded-full font-source-code-pro text-primary py-1 text-sm font-semibold">
+                    {project.category}
+                  </span>
+                  <p className="text-white opacity-70 text-sm mb-4 flex-grow">{project.description}</p>
                   <div className="flex justify-between items-center">
-                    <span className="inline-block bg-muted rounded-full px-3 py-1 text-sm font-semibold text-muted-foreground">
-                      {project.category}
-                    </span>
-                    <a href={project.link} className="text-primary hover:text-primary/80 transition-colors duration-200 flex items-center gap-1">
+
+                    <a href={project.link} className="text-white hover:text-primary/80 transition-colors duration-200 flex items-center gap-1">
                       See More
                     </a>
                   </div>
@@ -297,7 +302,7 @@ function App() {
             </div>
           </div>
         </section>
-        <PortfolioSection/>
+        <PortfolioSection />
       </main>
     </div>
   );
