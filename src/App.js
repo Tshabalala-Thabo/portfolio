@@ -1,5 +1,6 @@
 import React from 'react';
 import BurgerMenu from './BurgerMenu';
+import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart } from 'lucide-react'
 
 export function Component() {
   const cardData = [
@@ -32,6 +33,59 @@ export function Component() {
         </div>
       ))}</>
   );
+}
+
+export function ProfessionalSkills() {
+  const skillCategories = [
+    {
+      title: "Frontend Development",
+      skills: [
+        { icon: Code, title: "HTML/CSS", description: "Proficient in creating responsive and accessible web layouts using modern HTML5 and CSS3." },
+        { icon: Zap, title: "JavaScript", description: "Expert in JavaScript, including ES6+ features, async programming, and popular frameworks like React." },
+        { icon: Globe, title: "Frameworks", description: "Experienced with frontend frameworks such as React, Vue, and Angular for building interactive UIs." },
+        { icon: Palette, title: "UI/UX", description: "Skilled in creating intuitive user interfaces and enhancing overall user experience in web applications." },
+      ]
+    },
+    {
+      title: "Backend and Programming",
+      skills: [
+        { icon: Server, title: "Node.js", description: "Proficient in server-side JavaScript using Node.js for building scalable and efficient backend services." },
+        { icon: Terminal, title: "Python", description: "Experienced in Python programming for web development, data analysis, and automation tasks." },
+        { icon: Cpu, title: "APIs", description: "Skilled in designing and implementing RESTful APIs and working with GraphQL for data querying." },
+        { icon: Database, title: "Databases", description: "Proficient in working with both SQL and NoSQL databases, including MySQL, PostgreSQL, and MongoDB." },
+      ]
+    },
+    {
+      title: "Design and Database",
+      skills: [
+        { icon: Figma, title: "Figma", description: "Experienced in using Figma for creating and collaborating on UI designs and prototypes." },
+        { icon: PenTool, title: "Illustrator", description: "Skilled in vector graphics creation and manipulation using Adobe Illustrator for logos and icons." },
+        { icon: TableProperties, title: "SQL", description: "Proficient in writing complex SQL queries and optimizing database performance for large-scale applications." },
+        { icon: BarChart, title: "Data Viz", description: "Experienced in data visualization techniques using tools like D3.js and Chart.js for interactive dashboards." },
+      ]
+    }
+  ]
+
+  return (
+    <>
+      {skillCategories.map((category, categoryIndex) => (
+        <div key={categoryIndex}>
+          <h3 className="text-xl font-source-code-pro font-semibold mb-6 text-primary">{category.title}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {category.skills.map((skill, skillIndex) => (
+              <div key={skillIndex} className="flex flex-col items-start space-y-2">
+                <div className="flex items-center space-x-2">
+                  <skill.icon className="w-6 h-6 text-primary" />
+                  <h4 className="text-2xl font-bold">{skill.title}</h4>
+                </div>
+                <p className="text-sm opacity-70 ">{skill.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </>
+  )
 }
 
 
@@ -107,7 +161,15 @@ function App() {
         <section className="py-16 px-4 max-w-7xl mx-auto">
           <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Component/>
+            <Component />
+          </div>
+        </section>
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100 bg-opacity-70 text-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-3xl text-center uppercase mb-12">Professional Skills</h2>
+            <div className="space-y-16">
+              <ProfessionalSkills />
+            </div>
           </div>
         </section>
       </main>
