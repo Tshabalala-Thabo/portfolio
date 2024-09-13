@@ -24,10 +24,10 @@ export function Component() {
     <>
       {cardData.map((card, index) => (
         <div key={index} className="bg-primary-100 border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden">
-          <div className="p-6">
-            <h3 className="text-normal text-primary font-source-code-pro font-semibold mb-2">{card.title}</h3>
-            <h1 className="text-2xl  text-white text-opacity-90 mb-4">{card.subtitle}</h1>
-            <p className="text-sm text-white text-opacity-70">{card.content}</p>
+          <div className="px-8 py-7">
+            <h3 className="text-2xl text-white font-semibold mb-2">{card.title}</h3>
+            <h1 className="text-lg font-source-code-pro font-bold text-primary mb-4">{card.subtitle}</h1>
+            <p className="text-white text-opacity-70">{card.content}</p>
           </div>
         </div>
       ))}</>
@@ -106,7 +106,7 @@ function App() {
         </section>
         <section className="py-16 px-4 max-w-7xl mx-auto">
           <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <Component/>
           </div>
         </section>
