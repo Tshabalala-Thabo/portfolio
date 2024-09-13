@@ -16,10 +16,10 @@ function BurgerMenu() {
         </button>
         {isOpen && (
           <div className="absolute top-14 right-4 sm:right-6 lg:right-8 bg-white shadow-lg rounded-lg py-2 w-48">
-            <a href="#" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">Home</a>
-            <a href="#" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">About</a>
-            <a href="#" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">Projects</a>
-            <a href="#" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">Contact</a>
+            <a href="/" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">Home</a>
+            <a href="/" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">About</a>
+            <a href="/" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">Projects</a>
+            <a href="/" className="block px-4 py-2 text-primary-200 hover:bg-primary-100">Contact</a>
           </div>
         )}
       </div>
