@@ -242,6 +242,108 @@ export function PortfolioSection() {
     </section>
   )
 }
+
+
+function Resume() {
+  const experienceEvents = [
+    {
+      title: "Software developer intern",
+      company: "Ground up Grinders",
+      date: "2023 - 10 months",
+      description: "Completed a Bachelor's degree in Computer Science, laying the foundation for a career in software development.",
+      skills: ["React Native", "Figma", "Firebase",]
+    },
+    {
+      title: "Software developer",
+      company: "Promilezi",
+      date: "2024(current) - 6 months",
+      description: "Started as a junior developer, working on front-end development for web applications.",
+      skills: ["Laravel", "NextJS", "Figma", "MySQL", "Tailwind"]
+    },
+  ]
+
+  const educationEvents = [
+    {
+      title: "Dimploma: Software development",
+      company: "Tshwane University of Technology",
+      date: "Sept 2019 - June 2023",
+      description: "Completed a Bachelor's degree in Computer Science, laying the foundation for a career in software development.",
+      skills: ["C++", "OracleSQL", "Algorithms"]
+    },
+    {
+      title: "National Senior Certificate",
+      date: "Dec 2016",
+      description: "Started as a junior developer, working on front-end development for web applications.",
+      skills: []
+    },
+  ]
+
+  return (
+    <section className="py-16 px-4 bg-primary-100 ">
+      <h2 className="text-3xl text-white font-bold text-center mb-12">RESUME</h2>
+      <div className="container mx-auto p-6">
+        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+        <div className="relative">
+          <div className="absolute left-4 top-12 bottom-0 w-0.5 bg-gray-200"></div>
+          <div className="space-y-12">
+            {experienceEvents.map((event, index) => (
+              <div key={index} className="relative pl-12">
+                <div className="absolute left-0 top-5 w-8 h-8  rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
+                  <div className="p-4">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-xl font-semibold">{event.title}</h3>
+                      <span className="text-sm font-source-code-pro text-primary">{event.date}</span>
+                    </div>
+                    <span className="text-sm font-source-code-pro text-primary">{event.company}</span>
+                    <p className="text-sm text-white opacity-70 mt-2 mb-4">{event.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {event.skills.map((skill, skillIndex) => (
+                        <span key={skillIndex} className="bg-white bg-opacity-70 px-2 text-primary-200">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="relative">
+          <div className="absolute left-4 top-12 bottom-0 w-0.5 bg-gray-200"></div>
+          <div className="space-y-12">
+            {educationEvents.map((event, index) => (
+              <div key={index} className="relative pl-12">
+                <div className="absolute left-0 top-5 w-8 h-8 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
+                  <div className="p-4">
+                    <div className="flex justify-between items-start">
+                      <h3 className="text-xl font-semibold">{event.title}</h3>
+                      <span className="text-sm font-source-code-pro text-primary">{event.date}</span>
+                    </div>
+                    <span className="text-sm font-source-code-pro text-primary">{event.company}</span>
+                    <p className="text-sm text-white opacity-70 mt-2 mb-4">{event.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {event.skills.map((skill, skillIndex) => (
+                        <span key={skillIndex} className="bg-white bg-opacity-70 px-2 text-primary-200">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
 function App() {
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -326,6 +428,7 @@ function App() {
           </div>
         </section>
         <PortfolioSection />
+        <Resume />
       </main>
     </div>
   );
