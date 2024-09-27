@@ -3,7 +3,7 @@ import BurgerMenu from './BurgerMenu';
 import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart } from 'lucide-react'
+import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github } from 'lucide-react'
 
 export function Component() {
   const cardData = [
@@ -96,51 +96,63 @@ export function ProfessionalSkills() {
 const projects = [
   {
     id: 1,
-    title: 'E-commerce Platform',
+    title: 'TM System',
     category: 'WEB-APP',
-    image: '/images/tmsystem.png',
+    image: '/images/projects/tmsystem.png',
     description: 'A full-featured e-commerce platform with product management, shopping cart, and secure checkout.',
-    link: '/projects/e-commerce-platform'
+    github: 'https://github.com/yourusername/tm-system',
+    website: 'https://tmsystem.com',
+    figma: 'https://figma.com/file/blockfirm',
   },
   {
     id: 2,
-    title: 'Fitness Tracker App',
-    category: 'MOBILE-APP',
-    image: '/images/tmsystem.png',
+    title: 'Block Firm Enterprise',
+    category: 'WEBSITE',
+    image: '/images/projects/bfe.png',
     description: 'Mobile app for tracking workouts, nutrition, and personal fitness goals with data visualization.',
-    link: '/projects/fitness-tracker-app'
+    github: 'https://github.com/yourusername/tm-system',
+    website: 'https://tmsystem.com',
+    figma: 'https://figma.com/file/blockfirm',
   },
   {
     id: 3,
-    title: 'Corporate Website',
+    title: 'Danny Niches',
     category: 'WEBSITE',
-    image: '/images/tmsystem.png',
+    image: '/images/projects/dn.png',
     description: 'Responsive corporate website with modern design, showcasing company services and portfolio.',
-    link: '/projects/corporate-website'
+    github: 'https://github.com/yourusername/tm-system',
+    website: 'https://tmsystem.com',
+    figma: 'https://figma.com/file/blockfirm',
   },
   {
     id: 4,
-    title: 'Tech Startup Logo',
-    category: 'LOGO',
-    image: '/images/tmsystem.png',
+    title: 'Lagiva Monate Pizza',
+    category: 'WEBSITE',
+    image: '/images/projects/lmp.png',
     description: 'Minimalist and memorable logo design for a cutting-edge tech startup in the AI industry.',
-    link: '/projects/tech-startup-logo'
+    github: 'https://github.com/yourusername/tm-system',
+    website: 'https://tmsystem.com',
+    figma: 'https://figma.com/file/blockfirm',
   },
   {
     id: 5,
-    title: 'Social Media Dashboard',
-    category: 'WEB-APP',
-    image: '/images/tmsystem.png',
+    title: 'Lagiva Vine',
+    category: 'WEBSITE',
+    image: '/images/projects/lv.png',
     description: 'Comprehensive dashboard for managing multiple social media accounts with analytics and scheduling.',
-    link: '/projects/social-media-dashboard'
+    github: 'https://github.com/yourusername/tm-system',
+    website: 'https://tmsystem.com',
+    figma: 'https://figma.com/file/blockfirm',
   },
   {
     id: 6,
     title: 'Restaurant Booking App',
     category: 'MOBILE-APP',
-    image: '/images/tmsystem.png',
+    image: '/images/projects/tmsystem.png',
     description: 'User-friendly mobile app for booking restaurant tables, viewing menus, and managing reservations.',
-    link: '/projects/restaurant-booking-app'
+    github: 'https://github.com/yourusername/tm-system',
+    website: 'https://tmsystem.com',
+    figma: 'https://figma.com/file/blockfirm',
   },
 ]
 
@@ -204,11 +216,22 @@ export function PortfolioSection() {
                     {project.category}
                   </span>
                   <p className="text-white opacity-70 text-sm mb-4 flex-grow">{project.description}</p>
-                  <div className="flex justify-between items-center">
-
-                    <a href={project.link} className="text-white hover:text-primary/80 transition-colors duration-200 flex items-center gap-1">
-                      See More
-                    </a>
+                  <div className="flex space-x-2 text-primary items-center">
+                    {project.website && (
+                      <a href={project.website} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                        <Globe className="size-6" />
+                      </a>
+                    )}
+                    {project.figma && (
+                      <a href={project.figma} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                        <Figma className="size-6" />
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                        <Github className="size-6" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
