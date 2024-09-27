@@ -27,7 +27,7 @@ export function Component() {
   return (
     <>
       {cardData.map((card, index) => (
-        <div key={index} className="bg-primary-100 border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden">
+        <div key={index} className="bg-glass border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden">
           <div className="px-8 py-7">
             <h3 className="text-2xl text-white font-semibold mb-2">{card.title}</h3>
             <h1 className="text-lg font-source-code-pro font-bold text-primary mb-4">{card.subtitle}</h1>
@@ -191,7 +191,7 @@ export function PortfolioSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className="bg-primary-100 relative border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden flex flex-col"
+                className="bg-glass relative border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden flex flex-col"
               >
                 <div
                   className="absolute bottom-0 right-0 -mr-[0px] w-[200px] h-[200px] bg-no-repeat bg-right-bottom z-0 opacity-80"
@@ -255,7 +255,7 @@ function App() {
                 alt="Hero illustration"
                 className="w-full h-auto"
               />
-              <div className="absolute bottom-12  md:bottom-16 sm:bottom-24 md:bottom-32 -left-24 lg:-left-9 sm:-left-10 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-primary-100 bg-opacity-70">
+              <div className="absolute bottom-12  md:bottom-16 sm:bottom-24 md:bottom-32 -left-24 lg:-left-9 sm:-left-10 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
                 <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
                   1 <span className="text-primary">+</span>
                 </h1>
@@ -264,7 +264,7 @@ function App() {
                   <p className="text-primary">EXPERIENCE</p>
                 </div>
               </div>
-              <div className="absolute bottom-4 sm:bottom-8 md:bottom-16 -right-24 lg:right-0 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-primary-100 bg-opacity-70">
+              <div className="absolute bottom-4 sm:bottom-8 md:bottom-16 -right-24 lg:right-0 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
                 <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
                   20 <span className="text-primary">+</span>
                 </h1>
@@ -294,7 +294,7 @@ function App() {
             <Component />
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100 bg-opacity-70 text-white">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100  text-white">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-3xl text-center uppercase mb-12">Professional Skills</h2>
             <div className="space-y-16">
