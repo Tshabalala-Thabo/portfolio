@@ -3,7 +3,7 @@ import BurgerMenu from './BurgerMenu';
 import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github } from 'lucide-react'
+import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github, GraduationCap, Briefcase, GraduationCapIcon } from 'lucide-react'
 
 export function Component() {
   const cardData = [
@@ -282,64 +282,77 @@ function Resume() {
     <section className="py-16 px-4 bg-primary-100 ">
       <h2 className="text-3xl text-white font-bold text-center mb-12">RESUME</h2>
       <div className="container mx-auto p-6">
-        <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-        <div className="relative">
-          <div className="absolute left-4 top-12 bottom-0 w-0.5 bg-gray-200"></div>
-          <div className="space-y-12">
-            {experienceEvents.map((event, index) => (
-              <div key={index} className="relative pl-12">
-                <div className="absolute left-0 top-5 w-8 h-8  rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
-                  <div className="p-4">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-xl font-semibold">{event.title}</h3>
-                      <span className="text-sm font-source-code-pro text-primary">{event.date}</span>
+        <div className="flex flex-col md:flex-row space-y-12 md:space-y-0 md:space-x-4">
+          <div>
+            <div className="flex mb-4 items-center space-x-2">
+              <Briefcase className="size-9 text-white opacity-70" />
+              <h2 className="text-lg font-bold text-primary font-source-code-pro">Experience</h2>
+            </div>
+            <div className="relative">
+              <div className="absolute left-[7px] opacity-70 top-9 bottom-0 w-0.5 bg-gray-200"></div>
+              <div className="space-y-12">
+                {experienceEvents.map((event, index) => (
+                  <div key={index} className="relative pl-8">
+                    <div className="absolute left-0 top-5 w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
                     </div>
-                    <span className="text-sm font-source-code-pro text-primary">{event.company}</span>
-                    <p className="text-sm text-white opacity-70 mt-2 mb-4">{event.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {event.skills.map((skill, skillIndex) => (
-                        <span key={skillIndex} className="bg-white bg-opacity-70 px-2 text-primary-200">{skill}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="relative">
-          <div className="absolute left-4 top-12 bottom-0 w-0.5 bg-gray-200"></div>
-          <div className="space-y-12">
-            {educationEvents.map((event, index) => (
-              <div key={index} className="relative pl-12">
-                <div className="absolute left-0 top-5 w-8 h-8 rounded-full flex items-center justify-center">
-                  <div className="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
-                  <div className="p-4">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-xl font-semibold">{event.title}</h3>
-                      <span className="text-sm font-source-code-pro text-primary">{event.date}</span>
-                    </div>
-                    <span className="text-sm font-source-code-pro text-primary">{event.company}</span>
-                    <p className="text-sm text-white opacity-70 mt-2 mb-4">{event.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {event.skills.map((skill, skillIndex) => (
-                        <span key={skillIndex} className="bg-white bg-opacity-70 px-2 text-primary-200">{skill}</span>
-                      ))}
+                    <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
+                      <div className="p-4">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-semibold">{event.title}</h3>
+                          <span className="text-sm font-source-code-pro text-primary">{event.date}</span>
+                        </div>
+                        <span className="text-sm font-source-code-pro text-primary">{event.company}</span>
+                        <p className="text-sm text-white opacity-70 mt-2 mb-4">{event.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {event.skills.map((skill, skillIndex) => (
+                            <span key={skillIndex} className="bg-white bg-opacity-70 px-2 text-primary-200">{skill}</span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+
+          <div>
+            <div className="flex mb-4 items-center space-x-2">
+              <GraduationCapIcon className="size-10 text-white opacity-70" />
+              <h2 className="text-lg font-bold text-primary font-source-code-pro">Education</h2>
+            </div>
+            <div className="relative">
+            <div className="absolute left-[7px] opacity-70 top-9 bottom-0 w-0.5 bg-gray-200"></div>
+            <div className="space-y-12">
+                {educationEvents.map((event, index) => (
+                  <div key={index} className="relative pl-8">
+                    <div className="absolute left-0 top-5 w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                    <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
+                      <div className="p-4">
+                        <div className="flex justify-between items-start">
+                          <h3 className="text-xl font-semibold">{event.title}</h3>
+                          <span className="text-sm font-source-code-pro text-primary">{event.date}</span>
+                        </div>
+                        <span className="text-sm font-source-code-pro text-primary">{event.company}</span>
+                        <p className="text-sm text-white opacity-70 mt-2 mb-4">{event.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {event.skills.map((skill, skillIndex) => (
+                            <span key={skillIndex} className="bg-white bg-opacity-70 px-2 text-primary-200">{skill}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}   
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </section >
   )
 }
 
