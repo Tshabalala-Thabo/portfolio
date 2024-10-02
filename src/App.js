@@ -3,7 +3,7 @@ import BurgerMenu from './BurgerMenu';
 import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github, GraduationCap, Briefcase, GraduationCapIcon } from 'lucide-react'
+import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github, Briefcase, GraduationCapIcon } from 'lucide-react'
 
 export function Component() {
   const cardData = [
