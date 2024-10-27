@@ -2,7 +2,7 @@ import React from 'react';
 //import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download } from 'lucide-react'
+import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download, Mail, Linkedin } from 'lucide-react'
 
 export function Component() {
   const cardData = [
@@ -211,20 +211,20 @@ export function PortfolioSection() {
                   <p className="text-white opacity-70 text-sm mb-4 flex-grow">{project.description}</p>
                   <div className="flex space-x-2 text-primary items-center">
                     {project.website && (
-                      <a href={project.website} target="_blank" rel="noopener noreferrer" 
-                         className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
+                      <a href={project.website} target="_blank" rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
                         <Globe className="size-6" />
                       </a>
                     )}
                     {project.figma && (
-                      <a href={project.figma} target="_blank" rel="noopener noreferrer" 
-                         className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
+                      <a href={project.figma} target="_blank" rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
                         <Figma className="size-6" />
                       </a>
                     )}
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" 
-                         className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
                         <Github className="size-6" />
                       </a>
                     )}
@@ -363,7 +363,7 @@ function App() {
       {/* <BurgerMenu /> */}
       <main className="pt-16 relative z-10">
         <section className="py-8 px-4 sm:py-12 md:py-16 lg:py-20">
-          <div className="max-w-7xl container mx-auto flex flex-col lg:flex-row justify-between items-center">
+          <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
             <div className="w-full flex flex-col items-center lg:items-start lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
               <p className="text-sm sm:text-base text-white font-bold mb-2">HELLO, <span className="text-primary">MY NAME IS</span></p>
               <h1 className='text-3xl sm:text-4xl md:text-5xl text-primary font-bold mb-4'>
@@ -432,14 +432,16 @@ function App() {
             </div>
           </div>
         </section>
-        <section className="py-16 px-4 max-w-7xl mx-auto">
+        <section className="py-16">
           <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Component />
+          <div className='container'>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Component />
+            </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100  text-white">
-          <div className="container mx-auto px-4 md:px-6">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100 text-white">
+          <div className="container mx-auto">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-3xl text-center uppercase mb-12">Professional Skills</h2>
             <div className="space-y-16">
               <ProfessionalSkills />
@@ -448,6 +450,50 @@ function App() {
         </section>
         <PortfolioSection />
         <Resume />
+        <section className="py-16 px-4 bg-primary-200">
+          <div className='container'>
+            <div className="w-full max-w-2xl mx-auto bg-glass p-4 rounded-md border bg-opacity-70 border-white border-opacity-10 text-white">
+              <div>
+                <div className="text-2xl font-bold text-white">Contact Me</div>
+                <div className="text-white opacity-70">Feel free to reach out through any of these platforms</div>
+              </div>
+              <div className="grid gap-4">
+                <div className="flex items-center space-x-4">
+                  <Mail className="h-6 w-6 text-primary" />
+                  <a
+                    variant="link"
+                    className="p-0 h-auto font-normal text-base text-white hover:text-primary"
+                    onClick={() => window.location.href = 'mailto:47thabo@gmail.com'}
+                  >
+                    47thabo@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <Github className="h-6 w-6 text-primary" />
+                  <a
+                    href="https://github.com/Tshabalala-Thabo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-primary"
+                  >
+                    github.com/Tshabalala-Thabo
+                  </a>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <Linkedin className="h-6 w-6 text-primary" />
+                  <a
+                    href="https://www.linkedin.com/in/thabo-tshabalala/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-primary"
+                  >
+                    linkedin.com/in/thabo-tshabalala
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
