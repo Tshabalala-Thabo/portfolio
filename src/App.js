@@ -3,19 +3,19 @@ import BurgerMenu from './BurgerMenu';
 import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github, Briefcase, GraduationCapIcon } from 'lucide-react'
+import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, TableProperties, BarChart, Github, Briefcase, GraduationCapIcon, Linkedin, Download } from 'lucide-react'
 
 export function Component() {
   const cardData = [
     {
-      title: "Web Development",
-      subtitle: "Crafting Digital Experiences",
-      content: "I create responsive, user-friendly websites using modern technologies. From concept to deployment, I ensure seamless functionality and engaging interfaces that captivate users and drive business growth."
-    },
-    {
       title: "UI/UX Design",
       subtitle: "Enhancing User Interactions",
       content: "I design intuitive and visually appealing user interfaces. By focusing on user experience, I create designs that are not only aesthetically pleasing but also functional and easy to navigate."
+    },
+    {
+      title: "Web Development",
+      subtitle: "Crafting Digital Experiences",
+      content: "I create responsive, user-friendly websites using modern technologies. From concept to deployment, I ensure seamless functionality and engaging interfaces that captivate users and drive business growth."
     },
     {
       title: "Mobile App Development",
@@ -43,19 +43,19 @@ export function ProfessionalSkills() {
     {
       title: "Frontend Development",
       skills: [
-        { icon: Code, title: "HTML/CSS", description: "Proficient in creating responsive and accessible web layouts using modern HTML5 and CSS3." },
-        { icon: Zap, title: "JavaScript", description: "Expert in JavaScript, including ES6+ features, async programming, and popular frameworks like React." },
-        { icon: Globe, title: "Frameworks", description: "Experienced with frontend frameworks such as React, Vue, and Angular for building interactive UIs." },
-        { icon: Palette, title: "UI/UX", description: "Skilled in creating intuitive user interfaces and enhancing overall user experience in web applications." },
+        { icon: Globe, title: "Next.js", description: "Proficient in using Next.js for building server-rendered applications and optimizing performance." },
+        { icon: Zap, title: "React.js", description: "Experienced in React.js for developing dynamic and interactive user interfaces with a component-based architecture." },
+        { icon: Cpu, title: "React Native", description: "Skilled in building cross-platform mobile applications using React Native." },
+        { icon: Palette, title: "Tailwind CSS", description: "Proficient in using Tailwind CSS for creating modern, responsive, and utility-first designs efficiently." },
       ]
     },
     {
-      title: "Backend and Programming",
+      title: "Backend and Database",
       skills: [
-        { icon: Server, title: "Node.js", description: "Proficient in server-side JavaScript using Node.js for building scalable and efficient backend services." },
-        { icon: Terminal, title: "Python", description: "Experienced in Python programming for web development, data analysis, and automation tasks." },
-        { icon: Cpu, title: "APIs", description: "Skilled in designing and implementing RESTful APIs and working with GraphQL for data querying." },
-        { icon: Database, title: "Databases", description: "Proficient in working with both SQL and NoSQL databases, including MySQL, PostgreSQL, and MongoDB." },
+        { icon: Server, title: "Node.js", description: "Proficient in server-side JavaScript using Node.js for developing robust and efficient backend services." },
+        { icon: Terminal, title: "PHP/Laravel", description: "Experienced in PHP/Laravel programming for web development." },
+        { icon: Cpu, title: "APIs", description: "Skilled in designing and integrating RESTful APIs and working with databases to enable smooth data flow between services." },
+        { icon: Database, title: "Databases", description: "Proficient in working with MySQL for relational database management and MongoDB for NoSQL database needs." },
       ]
     },
     {
@@ -63,8 +63,6 @@ export function ProfessionalSkills() {
       skills: [
         { icon: Figma, title: "Figma", description: "Experienced in using Figma for creating and collaborating on UI designs and prototypes." },
         { icon: PenTool, title: "Illustrator", description: "Skilled in vector graphics creation and manipulation using Adobe Illustrator for logos and icons." },
-        { icon: TableProperties, title: "SQL", description: "Proficient in writing complex SQL queries and optimizing database performance for large-scale applications." },
-        { icon: BarChart, title: "Data Viz", description: "Experienced in data visualization techniques using tools like D3.js and Chart.js for interactive dashboards." },
       ]
     }
   ]
@@ -323,12 +321,12 @@ function Resume() {
               <h2 className="text-lg font-bold text-primary font-source-code-pro">Education</h2>
             </div>
             <div className="relative">
-            <div className="absolute left-[7px] opacity-70 top-9 bottom-0 w-0.5 bg-gray-200"></div>
-            <div className="space-y-12">
+              <div className="absolute left-[7px] opacity-70 top-9 bottom-0 w-0.5 bg-gray-200"></div>
+              <div className="space-y-12">
                 {educationEvents.map((event, index) => (
                   <div key={index} className="relative pl-8">
                     <div className="absolute left-0 top-5 w-4 h-4 bg-white rounded-full flex items-center justify-center">
-                    <div className="w-3 h-3 bg-white rounded-full"></div>
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
                     </div>
                     <div className="bg-primary-200 border rounded-lg border-white border-opacity-10 text-white">
                       <div className="p-4">
@@ -346,7 +344,7 @@ function Resume() {
                       </div>
                     </div>
                   </div>
-                ))}   
+                ))}
               </div>
             </div>
           </div>
@@ -364,7 +362,7 @@ function App() {
         className="absolute top-0 right-0 -mt-[0px] -mr-[0px] w-[890px] h-[1673px] bg-no-repeat bg-right-top z-0 opacity-30 lg:opacity-100"
         style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/polygons.svg)` }}
       ></div>
-      <BurgerMenu />
+      {/* <BurgerMenu /> */}
       <main className="pt-16 relative z-10">
         <section className="py-8 px-4 sm:py-12 md:py-16 lg:py-20">
           <div className="max-w-7xl container mx-auto flex flex-col lg:flex-row justify-between items-center">
@@ -375,15 +373,20 @@ function App() {
               </h1>
               <p className="text-base lg:text-lg mb-4 font-bold text-white">I am: <span className="text-white text-xl sm:text-2xl font-normal ml-1 font-source-code-pro">Software Developer</span></p>
               <div className='hidden lg:block'>
-                <p className="text-sm sm:text-base text-white opacity-70 mb-6">From Pretoria, with competitive skills and a strong passion for my career. Always excited to work on a project.</p>
+                <p className="text-sm sm:text-base text-white opacity-70 mb-6">I have competitive skills and a strong passion for my career. Always excited to work on a project.</p>
                 <div className="flex mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 opacity-70 mr-4 text-white" viewBox="0 0 512 512"><path fill="currentColor" d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 0 0 3.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 0 1-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0 0 25.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 0 1 5-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 0 1 112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 0 1 5 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 0 0 4-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32Z" /></svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 opacity-70 mr-4 text-white" viewBox="0 0 512 512"><path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64Z" /></svg>
+                  <a href="https://github.com/Tshabalala-Thabo" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5 0 6.2 0 12.9c0 5.4 3.5 10 8.2 11.6.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.2-1.2-1.5-1.2-1.5-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1.5 1.2 2 3.2 1.4 4 1 .1-.9.5-1.4.9-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.5.1-3.1 0 0 1.1-.4 3.5 1.5 1-.3 2.1-.5 3.2-.5 1.1 0 2.2.2 3.2.5 2.4-1.9 3.5-1.5 3.5-1.5.7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.4 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .3.2.7.8.6C20.5 22.9 24 18.3 24 12.9 24 6.2 18.3.5 12 .5z" /></svg>
+                  </a>
+                  <a href="https://www.linkedin.com/in/thabo-tshabalala/" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.1 20.45H3.56V9h3.54v11.45zm-1.77-12.99c-1.13 0-2.05-.93-2.05-2.06 0-1.14.92-2.06 2.05-2.06 1.13 0 2.05.92 2.05 2.06 0 1.13-.92 2.06-2.05 2.06zm16.12 12.99h-3.54v-5.84c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.09v5.93h-3.54V9h3.4v1.56h.05c.48-.91 1.66-1.87 3.43-1.87 3.67 0 4.35 2.42 4.35 5.57v6.19z" /></svg>
+                  </a>
                 </div>
                 <div className="flex items-center">
-                  <button className="bg-primary mt-2 hover:bg-primary/80 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
+                  <a href="/ThaboTshabalala_CV_10_2024.pdf" download className="bg-primary mt-2 hover:bg-primary/50 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
+                    <Download className="inline-block mr-2" />
                     Download CV
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -415,8 +418,12 @@ function App() {
             <div className='block lg:hidden flex flex-col items-center' >
               <p className="text-sm lg:text-base text-white opacity-70 text-center mt-6 mb-6">From Pretoria, with competitive skills in software development and UI design. I have a strong passion for my career and am always excited to tackle new projects, ensuring both functionality and great user experiences.</p>
               <div className="flex mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-8 sm:h-8 opacity-70 mr-2 text-white" viewBox="0 0 512 512"><path fill="currentColor" d="M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2 217.9a17.56 17.56 0 0 0 3.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4 102.4 0 0 1-22.6 2.7c-43.1 0-52.9-33.5-52.9-33.5-10.2-26.5-24.9-33.6-24.9-33.6-19.5-13.7-.1-14.1 1.4-14.1h.1c22.5 2 34.3 23.8 34.3 23.8 11.2 19.6 26.2 25.1 39.6 25.1a63 63 0 0 0 25.6-6c2-14.8 7.8-24.9 14.2-30.7-49.7-5.8-102-25.5-102-113.5 0-25.1 8.7-45.6 23-61.6-2.3-5.8-10-29.2 2.2-60.8a18.64 18.64 0 0 1 5-.5c8.1 0 26.4 3.1 56.6 24.1a208.21 208.21 0 0 1 112.2 0c30.2-21 48.5-24.1 56.6-24.1a18.64 18.64 0 0 1 5 .5c12.2 31.6 4.5 55 2.2 60.8 14.3 16.1 23 36.6 23 61.6 0 88.2-52.4 107.6-102.3 113.3 8 7.1 15.2 21.1 15.2 42.5 0 30.7-.3 55.5-.3 63 0 5.4 3.1 11.5 11.4 11.5a19.35 19.35 0 0 0 4-.4C415.9 449.2 480 363.1 480 261.7 480 134.9 379.7 32 256 32Z" /></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 sm:w-8 sm:h-8 opacity-70 text-white" viewBox="0 0 512 512"><path fill="currentColor" d="M444.17 32H70.28C49.85 32 32 46.7 32 66.89v374.72C32 461.91 49.85 480 70.28 480h373.78c20.54 0 35.94-18.21 35.94-38.39V66.89C480.12 46.7 464.6 32 444.17 32Zm-273.3 373.43h-64.18V205.88h64.18ZM141 175.54h-.46c-20.54 0-33.84-15.29-33.84-34.43 0-19.49 13.65-34.42 34.65-34.42s33.85 14.82 34.31 34.42c-.01 19.14-13.31 34.43-34.66 34.43Zm264.43 229.89h-64.18V296.32c0-26.14-9.34-44-32.56-44-17.74 0-28.24 12-32.91 23.69-1.75 4.2-2.22 9.92-2.22 15.76v113.66h-64.18V205.88h64.18v27.77c9.34-13.3 23.93-32.44 57.88-32.44 42.13 0 74 27.77 74 87.64Z" /></svg>
+                <a href="https://github.com/yourusername" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
+                  <Github className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                </a>
+                <a href="https://linkedin.com/in/yourusername" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
+                  <Linkedin className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                </a>
               </div>
               <div className="flex items-center">
                 <button className="bg-primary mt-2 hover:bg-primary/80 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
