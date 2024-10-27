@@ -53,8 +53,8 @@ export function ProfessionalSkills() {
       skills: [
         { icon: Server, title: "Node.js", description: "Proficient in server-side JavaScript using Node.js for developing robust and efficient backend services." },
         { icon: Terminal, title: "PHP/Laravel", description: "Experienced in PHP/Laravel programming for web development." },
-        { icon: Cpu, title: "APIs", description: "Skilled in designing and integrating RESTful APIs and working with databases to enable smooth data flow between services." },
-        { icon: Database, title: "Databases", description: "Proficient in working with MySQL for relational database management and MongoDB for NoSQL database needs." },
+        { icon: Database, title: "MySQL", description: "Proficient in working with MySQL for relational database management." },
+        { icon: Database, title: "MongoDB", description: "Experienced in using MongoDB for NoSQL database needs." },
       ]
     },
     {
