@@ -1,9 +1,8 @@
 import React from 'react';
-import BurgerMenu from './BurgerMenu';
 import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code, Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Linkedin, Download } from 'lucide-react'
+import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Linkedin, Download } from 'lucide-react'
 
 export function Component() {
   const cardData = [
