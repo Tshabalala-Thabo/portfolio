@@ -154,7 +154,6 @@ const categories = ['ALL', 'WEB-APP', 'MOBILE-APP', 'WEBSITE', 'LOGO']
 export function PortfolioSection() {
   const [activeTab, setActiveTab] = useState('ALL')
 
-  setActiveTab("ALL") // remove this is enabling tabs again
   const filteredProjects = activeTab === 'ALL'
     ? projects
     : projects.filter(project => project.category === activeTab)
