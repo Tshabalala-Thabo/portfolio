@@ -243,18 +243,18 @@ export function PortfolioSection() {
 function Resume() {
   const experienceEvents = [
     {
-      title: "Software developer intern",
-      company: "Ground up Grinders",
-      date: "2023 - 10 months",
-      description: "Completed a Bachelor's degree in Computer Science, laying the foundation for a career in software development.",
-      skills: ["React Native", "Figma", "Firebase",]
-    },
-    {
       title: "Software developer",
       company: "Promilezi",
       date: "2024(current) - 6 months",
       description: "Started as a junior developer, working on front-end development for web applications.",
       skills: ["Laravel", "NextJS", "Figma", "MySQL", "Tailwind"]
+    },
+    {
+      title: "Software developer intern",
+      company: "Ground up Grinders",
+      date: "2023 - 10 months",
+      description: "Completed a Bachelor's degree in Computer Science, laying the foundation for a career in software development.",
+      skills: ["React Native", "Figma", "Firebase",]
     },
   ]
 
