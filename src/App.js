@@ -406,28 +406,29 @@ function App() {
               </div>
               <div className="absolute bottom-4 sm:bottom-8 md:bottom-16 -right-24 lg:right-0 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
                 <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
-                  20 <span className="text-primary">+</span>
+                  3 <span className="text-primary">+</span>
                 </h1>
                 <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
-                  <p>PROJECTS</p>
-                  <p className="text-primary">COMPLETED</p>
+                  <p>PERSONAL</p>
+                  <p className="text-primary">PROJECTS</p>
                 </div>
               </div>
             </div>
             <div className='block lg:hidden flex flex-col items-center' >
               <p className="text-sm lg:text-base text-white opacity-70 text-center mt-6 mb-6">From Pretoria, with competitive skills in software development and UI design. I have a strong passion for my career and am always excited to tackle new projects, ensuring both functionality and great user experiences.</p>
               <div className="flex mb-6">
-                <a href="https://github.com/yourusername" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
-                  <Github className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <a href="https://github.com/Tshabalala-Thabo" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5 0 6.2 0 12.9c0 5.4 3.5 10 8.2 11.6.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.2-1.2-1.5-1.2-1.5-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1.5 1.2 2 3.2 1.4 4 1 .1-.9.5-1.4.9-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.5.1-3.1 0 0 1.1-.4 3.5 1.5 1-.3 2.1-.5 3.2-.5 1.1 0 2.2.2 3.2.5 2.4-1.9 3.5-1.5 3.5-1.5.7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.4 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .3.2.7.8.6C20.5 22.9 24 18.3 24 12.9 24 6.2 18.3.5 12 .5z" /></svg>
                 </a>
-                <a href="https://linkedin.com/in/yourusername" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
-                  <Linkedin className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                <a href="https://www.linkedin.com/in/thabo-tshabalala/" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.1 20.45H3.56V9h3.54v11.45zm-1.77-12.99c-1.13 0-2.05-.93-2.05-2.06 0-1.14.92-2.06 2.05-2.06 1.13 0 2.05.92 2.05 2.06 0 1.13-.92 2.06-2.05 2.06zm16.12 12.99h-3.54v-5.84c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.09v5.93h-3.54V9h3.4v1.56h.05c.48-.91 1.66-1.87 3.43-1.87 3.67 0 4.35 2.42 4.35 5.57v6.19z" /></svg>
                 </a>
               </div>
               <div className="flex items-center">
-                <button className="bg-primary mt-2 hover:bg-primary/80 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
+                <a href="/ThaboTshabalala_CV_10_2024.pdf" download className="bg-primary mt-2 hover:bg-primary/50 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
+                  <Download className="inline-block mr-2" />
                   Download CV
-                </button>
+                </a>
               </div>
             </div>
           </div>
