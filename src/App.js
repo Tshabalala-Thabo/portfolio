@@ -96,10 +96,9 @@ const projects = [
     title: 'TM System',
     category: 'WEB-APP',
     image: '/images/projects/tmsystem.png',
-    description: 'A full-featured e-commerce platform with product management, shopping cart, and secure checkout.',
-    github: 'https://github.com/yourusername/tm-system',
-    website: 'https://tmsystem.com',
-    figma: 'https://figma.com/file/blockfirm',
+    description: 'Web app for landlords to efficiently manage their properties and tenants.',
+    github: 'https://github.com/Tshabalala-Thabo/TenantManagementSystem',
+    figma: 'https://www.figma.com/proto/B61Ppmehgkogvp84zrOHkx/Tenant-Management-System?node-id=1-2&starting-point-node-id=1%3A2&t=oWnFpvzlhwP0GhV1-1',
   },
   // {
   //   id: 2,
@@ -117,9 +116,8 @@ const projects = [
     category: 'WEBSITE',
     image: '/images/projects/dn.png',
     description: 'Responsive corporate website with modern design, showcasing company services and portfolio.',
-    github: 'https://github.com/yourusername/tm-system',
-    website: 'https://tmsystem.com',
-    figma: 'https://figma.com/file/blockfirm',
+    github: 'https://github.com/Tshabalala-Thabo/danny-niches-react',
+    website: 'https://dannyniches.co.za',
   },
   // {
   //   id: 4,
@@ -136,10 +134,8 @@ const projects = [
     title: 'Lagiva Vine',
     category: 'WEBSITE',
     image: '/images/projects/lv.png',
-    description: 'Comprehensive dashboard for managing multiple social media accounts with analytics and scheduling.',
-    github: 'https://github.com/yourusername/tm-system',
-    website: 'https://tmsystem.com',
-    figma: 'https://figma.com/file/blockfirm',
+    description: 'Crafted an elegant wine website for enthusiasts to explore wines.',
+    website: 'https://mrn-b453f.vercel.app',
   },
   // {
   //   id: 6,
@@ -215,17 +211,20 @@ export function PortfolioSection() {
                   <p className="text-white opacity-70 text-sm mb-4 flex-grow">{project.description}</p>
                   <div className="flex space-x-2 text-primary items-center">
                     {project.website && (
-                      <a href={project.website} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                      <a href={project.website} target="_blank" rel="noopener noreferrer" 
+                         className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
                         <Globe className="size-6" />
                       </a>
                     )}
                     {project.figma && (
-                      <a href={project.figma} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                      <a href={project.figma} target="_blank" rel="noopener noreferrer" 
+                         className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
                         <Figma className="size-6" />
                       </a>
                     )}
                     {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors duration-200">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" 
+                         className="hover:text-primary transition-colors duration-200 transform hover:scale-125 hover:rotate-12 transition-transform duration-200">
                         <Github className="size-6" />
                       </a>
                     )}
