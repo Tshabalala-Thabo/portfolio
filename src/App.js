@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Tab } from '@headlessui/react'
+import { Tab } from '@headlessui/react'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
 import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download, Mail, Linkedin } from 'lucide-react'
@@ -149,12 +149,11 @@ const projects = [
   // },
 ]
 
-//const categories = ['ALL', 'WEB-APP', 'MOBILE-APP', 'WEBSITE', 'LOGO']
+const categories = ['ALL', 'WEB-APP', 'MOBILE-APP', 'WEBSITE', 'LOGO']
 
 export function PortfolioSection() {
   const [activeTab, setActiveTab] = useState('ALL')
 
-  setActiveTab("ALL") // remove this is enabling tabs again
   const filteredProjects = activeTab === 'ALL'
     ? projects
     : projects.filter(project => project.category === activeTab)
@@ -164,8 +163,8 @@ export function PortfolioSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center uppercase mb-8">My Portfolio</h2>
 
-        {/* <Tab.Group>
-          <Tab.List className="flex justify-center space-x-1 mb-8">
+        <Tab.Group>
+          <Tab.List className="hidden flex justify-center space-x-1 mb-8">
             {categories.map((category) => (
               <Tab
                 key={category}
@@ -182,7 +181,7 @@ export function PortfolioSection() {
               </Tab>
             ))}
           </Tab.List>
-        </Tab.Group> */}
+        </Tab.Group>
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
