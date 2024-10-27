@@ -461,9 +461,8 @@ function App() {
                 <div className="flex items-center space-x-4">
                   <Mail className="h-6 w-6 text-primary" />
                   <a
-                    variant="link"
+                    href="mailto:47thabo@gmail.com"
                     className="p-0 h-auto font-normal text-base text-white hover:text-primary"
-                    onClick={() => window.location.href = 'mailto:47thabo@gmail.com'}
                   >
                     47thabo@gmail.com
                   </a>
