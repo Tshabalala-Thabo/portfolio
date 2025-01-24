@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download, Mail, Linkedin } from 'lucide-react'
 import Bounce_Loader from './components/BounceLoader.js'
 
+import AnimatedTextComponent from "./components/AnimatedText.js"
+
 export function Component() {
   const cardData = [
     {
@@ -29,14 +31,15 @@ export function Component() {
         <div key={index} className="bg-glass border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden">
           <div className="px-8 py-7">
             <h3 className="text-2xl text-white font-semibold mb-2">{card.title}</h3>
-            <h1 className="text-lg font-source-code-pro font-bold text-primary mb-4">{card.subtitle}</h1>
+            <AnimatedTextComponent className="text-lg font-source-code-pro font-bold text-primary mb-4"
+              text={card.subtitle || "Default Subtitle"} />
             <p className="text-white text-opacity-70">{card.content}</p>
           </div>
         </div>
-      ))}</>
+      ))}
+    </>
   );
 }
-
 export function ProfessionalSkills() {
   const skillCategories = [
     {
@@ -205,9 +208,11 @@ export function PortfolioSection() {
                 <img src={project.image} alt={project.title} className="w-full h-auto object-cover z-10" />
                 <div className="p-4 flex-grow flex flex-col">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <span className="inline-block bg-muted rounded-full font-source-code-pro text-primary py-1 text-sm font-semibold">
-                    {project.category}
-                  </span>
+                  <AnimatedTextComponent
+                    text={project.category}
+                    as="span" // Render as <span>
+                    className="inline-block bg-muted rounded-full font-source-code-pro text-primary py-1 text-sm font-semibold"
+                  />
                   <p className="text-white opacity-70 text-sm mb-4 flex-grow">{project.description}</p>
                   <div className="flex space-x-2 text-primary items-center">
                     {project.website && (
