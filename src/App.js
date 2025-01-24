@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Tab } from '@headlessui/react'
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
 import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download, Mail, Linkedin } from 'lucide-react'
+import Bounce_Loader from './components/BounceLoader.js'
 
 export function Component() {
   const cardData = [
@@ -354,146 +354,162 @@ function Resume() {
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a minimum 3-second loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    // Cleanup the timer
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <div
-        className="absolute top-0 right-0 -mt-[0px] -mr-[0px] w-[890px] h-[1673px] bg-no-repeat bg-right-top z-0 opacity-30 lg:opacity-100"
-        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/polygons.svg)` }}
-      ></div>
-      {/* <BurgerMenu /> */}
-      <main className="pt-16 relative z-10">
-        <section className="py-8 px-4 sm:py-12 md:py-16 lg:py-20">
-          <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-            <div className="w-full flex flex-col items-center lg:items-start lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-              <p className="text-sm sm:text-base text-white font-bold mb-2">HELLO, <span className="text-primary">MY NAME IS</span></p>
-              <h1 className='text-3xl sm:text-4xl md:text-5xl text-primary font-bold mb-4'>
-                THABO <span className='text-primary-200 [text-shadow:_-1px_-1px_0_#fff,_1px_-1px_0_#fff,_-1px_1px_0_#fff,_1px_1px_0_#fff]'>TSHABALALA</span>
-              </h1>
-              <p className="text-base lg:text-lg mb-4 font-bold text-white">I am: <span className="text-white text-xl sm:text-2xl font-normal ml-1 font-source-code-pro">Software Developer</span></p>
-              <div className='hidden lg:block'>
-                <p className="text-sm sm:text-base text-white opacity-70 mb-6">I have competitive skills and a strong passion for my career. Always excited to work on a project.</p>
-                <div className="flex mb-6">
-                  <a href="https://github.com/Tshabalala-Thabo" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5 0 6.2 0 12.9c0 5.4 3.5 10 8.2 11.6.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.2-1.2-1.5-1.2-1.5-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1.5 1.2 2 3.2 1.4 4 1 .1-.9.5-1.4.9-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.5.1-3.1 0 0 1.1-.4 3.5 1.5 1-.3 2.1-.5 3.2-.5 1.1 0 2.2.2 3.2.5 2.4-1.9 3.5-1.5 3.5-1.5.7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.4 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .3.2.7.8.6C20.5 22.9 24 18.3 24 12.9 24 6.2 18.3.5 12 .5z" /></svg>
-                  </a>
-                  <a href="https://www.linkedin.com/in/thabo-tshabalala/" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.1 20.45H3.56V9h3.54v11.45zm-1.77-12.99c-1.13 0-2.05-.93-2.05-2.06 0-1.14.92-2.06 2.05-2.06 1.13 0 2.05.92 2.05 2.06 0 1.13-.92 2.06-2.05 2.06zm16.12 12.99h-3.54v-5.84c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.09v5.93h-3.54V9h3.4v1.56h.05c.48-.91 1.66-1.87 3.43-1.87 3.67 0 4.35 2.42 4.35 5.57v6.19z" /></svg>
-                  </a>
+      <Bounce_Loader isLoading={isLoading} />
+      {!isLoading && (
+        <>
+          <div
+            className="absolute top-0 right-0 -mt-[0px] -mr-[0px] w-[890px] h-[1673px] bg-no-repeat bg-right-top z-0 opacity-30 lg:opacity-100"
+            style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/polygons.svg)` }}
+          ></div>
+          <main className="pt-16 relative z-10">
+            <section className="py-8 px-4 sm:py-12 md:py-16 lg:py-20">
+              <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+                <div className="w-full flex flex-col items-center lg:items-start lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                  <p className="text-sm sm:text-base text-white font-bold mb-2">HELLO, <span className="text-primary">MY NAME IS</span></p>
+                  <h1 className='text-3xl sm:text-4xl md:text-5xl text-primary font-bold mb-4'>
+                    THABO <span className='text-primary-200 [text-shadow:_-1px_-1px_0_#fff,_1px_-1px_0_#fff,_-1px_1px_0_#fff,_1px_1px_0_#fff]'>TSHABALALA</span>
+                  </h1>
+                  <p className="text-base lg:text-lg mb-4 font-bold text-white">I am: <span className="text-white text-xl sm:text-2xl font-normal ml-1 font-source-code-pro">Software Developer</span></p>
+                  <div className='hidden lg:block'>
+                    <p className="text-sm sm:text-base text-white opacity-70 mb-6">I have competitive skills and a strong passion for my career. Always excited to work on a project.</p>
+                    <div className="flex mb-6">
+                      <a href="https://github.com/Tshabalala-Thabo" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5 0 6.2 0 12.9c0 5.4 3.5 10 8.2 11.6.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.2-1.2-1.5-1.2-1.5-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1.5 1.2 2 3.2 1.4 4 1 .1-.9.5-1.4.9-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.5.1-3.1 0 0 1.1-.4 3.5 1.5 1-.3 2.1-.5 3.2-.5 1.1 0 2.2.2 3.2.5 2.4-1.9 3.5-1.5 3.5-1.5.7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.4 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .3.2.7.8.6C20.5 22.9 24 18.3 24 12.9 24 6.2 18.3.5 12 .5z" /></svg>
+                      </a>
+                      <a href="https://www.linkedin.com/in/thabo-tshabalala/" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.1 20.45H3.56V9h3.54v11.45zm-1.77-12.99c-1.13 0-2.05-.93-2.05-2.06 0-1.14.92-2.06 2.05-2.06 1.13 0 2.05.92 2.05 2.06 0 1.13-.92 2.06-2.05 2.06zm16.12 12.99h-3.54v-5.84c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.09v5.93h-3.54V9h3.4v1.56h.05c.48-.91 1.66-1.87 3.43-1.87 3.67 0 4.35 2.42 4.35 5.57v6.19z" /></svg>
+                      </a>
+                    </div>
+                    <div className="flex items-center">
+                      <a href="/ThaboTshabalala_CV_10_2024.pdf" download className="bg-primary mt-2 hover:bg-primary/50 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
+                        <Download className="inline-block mr-2" />
+                        Download CV
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <a href="/ThaboTshabalala_CV_10_2024.pdf" download className="bg-primary mt-2 hover:bg-primary/50 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
-                    <Download className="inline-block mr-2" />
-                    Download CV
-                  </a>
+                <div className="w-1/2 md:w-2/3 lg:w-5/12 relative">
+                  <img
+                    src="/images/right.svg"
+                    alt="Hero illustration"
+                    className="w-full h-auto"
+                  />
+                  <div className="absolute bottom-12  md:bottom-16 sm:bottom-24 md:bottom-32 -left-24 lg:-left-9 sm:-left-10 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
+                    <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
+                      1 <span className="text-primary">+</span>
+                    </h1>
+                    <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
+                      <p>YEARS OF</p>
+                      <p className="text-primary">EXPERIENCE</p>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 sm:bottom-8 md:bottom-16 -right-24 lg:right-0 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
+                    <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
+                      3 <span className="text-primary">+</span>
+                    </h1>
+                    <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
+                      <p>PERSONAL</p>
+                      <p className="text-primary">PROJECTS</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="w-1/2 md:w-2/3 lg:w-5/12 relative">
-              <img
-                src="/images/right.svg"
-                alt="Hero illustration"
-                className="w-full h-auto"
-              />
-              <div className="absolute bottom-12  md:bottom-16 sm:bottom-24 md:bottom-32 -left-24 lg:-left-9 sm:-left-10 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
-                <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
-                  1 <span className="text-primary">+</span>
-                </h1>
-                <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
-                  <p>YEARS OF</p>
-                  <p className="text-primary">EXPERIENCE</p>
-                </div>
-              </div>
-              <div className="absolute bottom-4 sm:bottom-8 md:bottom-16 -right-24 lg:right-0 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
-                <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
-                  3 <span className="text-primary">+</span>
-                </h1>
-                <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
-                  <p>PERSONAL</p>
-                  <p className="text-primary">PROJECTS</p>
-                </div>
-              </div>
-            </div>
-            <div className='block lg:hidden flex flex-col items-center' >
-              <p className="text-sm lg:text-base text-white opacity-70 text-center mt-6 mb-6">From Pretoria, with competitive skills in software development and UI design. I have a strong passion for my career and am always excited to tackle new projects, ensuring both functionality and great user experiences.</p>
-              <div className="flex mb-6">
-                <a href="https://github.com/Tshabalala-Thabo" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5 0 6.2 0 12.9c0 5.4 3.5 10 8.2 11.6.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.2-1.2-1.5-1.2-1.5-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1.5 1.2 2 3.2 1.4 4 1 .1-.9.5-1.4.9-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.5.1-3.1 0 0 1.1-.4 3.5 1.5 1-.3 2.1-.5 3.2-.5 1.1 0 2.2.2 3.2.5 2.4-1.9 3.5-1.5 3.5-1.5.7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.4 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .3.2.7.8.6C20.5 22.9 24 18.3 24 12.9 24 6.2 18.3.5 12 .5z" /></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/thabo-tshabalala/" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.1 20.45H3.56V9h3.54v11.45zm-1.77-12.99c-1.13 0-2.05-.93-2.05-2.06 0-1.14.92-2.06 2.05-2.06 1.13 0 2.05.92 2.05 2.06 0 1.13-.92 2.06-2.05 2.06zm16.12 12.99h-3.54v-5.84c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.09v5.93h-3.54V9h3.4v1.56h.05c.48-.91 1.66-1.87 3.43-1.87 3.67 0 4.35 2.42 4.35 5.57v6.19z" /></svg>
-                </a>
-              </div>
-              <div className="flex items-center">
-                <a href="/ThaboTshabalala_CV_10_2024.pdf" download className="bg-primary mt-2 hover:bg-primary/50 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
-                  <Download className="inline-block mr-2" />
-                  Download CV
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="py-16">
-          <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
-          <div className='container'>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Component />
-            </div>
-          </div>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100 text-white">
-          <div className="container mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-3xl text-center uppercase mb-12">Professional Skills</h2>
-            <div className="space-y-16">
-              <ProfessionalSkills />
-            </div>
-          </div>
-        </section>
-        <PortfolioSection />
-        <Resume />
-        <section className="py-16 px-4 bg-primary-200">
-          <div className='container'>
-            <div className="w-full max-w-2xl mx-auto bg-glass p-4 rounded-md border bg-opacity-70 border-white border-opacity-10 text-white">
-              <div>
-                <div className="text-2xl font-bold text-white">Contact Me</div>
-                <div className="text-white opacity-70">Feel free to reach out through any of these platforms</div>
-              </div>
-              <div className="grid gap-4">
-                <div className="flex items-center space-x-4">
-                  <Mail className="h-6 w-6 text-primary" />
-                  <a
-                    href="mailto:47thabo@gmail.com"
-                    className="p-0 h-auto font-normal text-base text-white hover:text-primary"
-                  >
-                    47thabo@gmail.com
-                  </a>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Github className="h-6 w-6 text-primary" />
-                  <a
-                    href="https://github.com/Tshabalala-Thabo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-primary"
-                  >
-                    github.com/Tshabalala-Thabo
-                  </a>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Linkedin className="h-6 w-6 text-primary" />
-                  <a
-                    href="https://www.linkedin.com/in/thabo-tshabalala/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-white hover:text-primary"
-                  >
-                    linkedin.com/in/thabo-tshabalala
-                  </a>
+                <div className='block lg:hidden flex flex-col items-center' >
+                  <p className="text-sm lg:text-base text-white opacity-70 text-center mt-6 mb-6">From Pretoria, with competitive skills in software development and UI design. I have a strong passion for my career and am always excited to tackle new projects, ensuring both functionality and great user experiences.</p>
+                  <div className="flex mb-6">
+                    <a href="https://github.com/Tshabalala-Thabo" className="hover:opacity-100 opacity-70 transition-opacity duration-200 mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.7.5 0 6.2 0 12.9c0 5.4 3.5 10 8.2 11.6.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.2-1.2-1.5-1.2-1.5-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1.5 1.2 2 3.2 1.4 4 1 .1-.9.5-1.4.9-1.7-2.8-.3-5.7-1.4-5.7-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.5.1-3.1 0 0 1.1-.4 3.5 1.5 1-.3 2.1-.5 3.2-.5 1.1 0 2.2.2 3.2.5 2.4-1.9 3.5-1.5 3.5-1.5.7 1.6.2 2.8.1 3.1.8.9 1.3 2 1.3 3.4 0 4.8-3 5.9-5.8 6.2.5.4.9 1.2.9 2.4v3.6c0 .3.2.7.8.6C20.5 22.9 24 18.3 24 12.9 24 6.2 18.3.5 12 .5z" /></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/thabo-tshabalala/" className="hover:opacity-100 opacity-70 transition-opacity duration-200">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-white" viewBox="0 0 24 24"><path fill="currentColor" d="M22.23 0H1.77C.79 0 0 .79 0 1.77v20.46C0 23.21.79 24 1.77 24h20.46c.98 0 1.77-.79 1.77-1.77V1.77C24 .79 23.21 0 22.23 0zM7.1 20.45H3.56V9h3.54v11.45zm-1.77-12.99c-1.13 0-2.05-.93-2.05-2.06 0-1.14.92-2.06 2.05-2.06 1.13 0 2.05.92 2.05 2.06 0 1.13-.92 2.06-2.05 2.06zm16.12 12.99h-3.54v-5.84c0-1.39-.03-3.18-1.94-3.18-1.94 0-2.24 1.52-2.24 3.09v5.93h-3.54V9h3.4v1.56h.05c.48-.91 1.66-1.87 3.43-1.87 3.67 0 4.35 2.42 4.35 5.57v6.19z" /></svg>
+                    </a>
+                  </div>
+                  <div className="flex items-center">
+                    <a href="/ThaboTshabalala_CV_10_2024.pdf" download className="bg-primary mt-2 hover:bg-primary/50 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded transition duration-300 text-sm sm:text-base">
+                      <Download className="inline-block mr-2" />
+                      Download CV
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-      </main>
+            </section>
+            <section className="py-16">
+              <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
+              <div className='container'>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <Component />
+                </div>
+              </div>
+            </section>
+            <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100 text-white">
+              <div className="container mx-auto">
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-3xl text-center uppercase mb-12">Professional Skills</h2>
+                <div className="space-y-16">
+                  <ProfessionalSkills />
+                </div>
+              </div>
+            </section>
+            <PortfolioSection />
+            <Resume />
+            <section className="py-16 px-4 bg-primary-200">
+              <div className='container'>
+                <div className="w-full max-w-2xl mx-auto bg-glass p-4 rounded-md border bg-opacity-70 border-white border-opacity-10 text-white">
+                  <div>
+                    <div className="text-2xl font-bold text-white">Contact Me</div>
+                    <div className="text-white opacity-70">Feel free to reach out through any of these platforms</div>
+                  </div>
+                  <div className="grid gap-4">
+                    <div className="flex items-center space-x-4">
+                      <Mail className="h-6 w-6 text-primary" />
+                      <a
+                        href="mailto:47thabo@gmail.com"
+                        className="p-0 h-auto font-normal text-base text-white hover:text-primary"
+                      >
+                        47thabo@gmail.com
+                      </a>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <Github className="h-6 w-6 text-primary" />
+                      <a
+                        href="https://github.com/Tshabalala-Thabo"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-primary"
+                      >
+                        github.com/Tshabalala-Thabo
+                      </a>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <Linkedin className="h-6 w-6 text-primary" />
+                      <a
+                        href="https://www.linkedin.com/in/thabo-tshabalala/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white hover:text-primary"
+                      >
+                        linkedin.com/in/thabo-tshabalala
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </>
+      )}
     </div>
   );
 }
