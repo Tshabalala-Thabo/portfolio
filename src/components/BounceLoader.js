@@ -2,7 +2,7 @@ import React from "react";
 import { BounceLoader } from "react-spinners";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Bounce_Loader = ({ isLoading }) => {
+const MyBounceLoader = ({ isLoading }) => {
   return (
     <AnimatePresence>
       {isLoading && (
@@ -19,4 +19,4 @@ const Bounce_Loader = ({ isLoading }) => {
   );
 };
 
-export default Bounce_Loader;
+export default MyBounceLoader;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Tab } from '@headlessui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download, Mail, Linkedin } from 'lucide-react'
-import Bounce_Loader from './components/BounceLoader.js'
+import MyBounceLoader from './components/BounceLoader.js'
 
 import AnimatedTextComponent from "./components/AnimatedText.js"
 
@@ -373,7 +373,7 @@ function App() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      <Bounce_Loader isLoading={isLoading} />
+      <MyBounceLoader isLoading={isLoading} />
       {!isLoading && (
         <>
           <div
