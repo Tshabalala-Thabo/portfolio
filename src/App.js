@@ -75,14 +75,14 @@ function Card({ card }) {
   return (
     <div
       ref={cardRef}
-      className="group relative overflow-hidden p-[1px] bg-gray-800 bg-opacity-20 rounded-lg transition-all duration-300 ease-in-out w-full sm:w-96 lg:w-auto lg:flex-1"
+      className="group relative overflow-hidden p-[1px] bg-gray-800 bg-opacity-20 rounded-lg transition-all duration-300 ease-in-out w-full lg:flex-1"
       style={{ transform: 'translate3d(0, 0, 0)' }}
     >
       {/* Blob Element */}
       <div
         className={`absolute opacity-0 ${
           isNear ? 'opacity-100' : 'group-hover:opacity-100'
-        } transition-opacity duration-300 ease-in-out blur-2xl w-64 h-64 bg-white bg-opacity-50 rounded-full`}
+        } transition-opacity duration-300 ease-in-out blur-2xl w-64 h-64 bg-white bg-opacity-20 rounded-full`}
         style={{
           top: `${mousePosition.y}px`,
           left: `${mousePosition.x}px`,
