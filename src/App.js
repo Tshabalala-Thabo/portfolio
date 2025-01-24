@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Tab } from '@headlessui/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Palette, Globe, Zap, Server, Database, Terminal, Cpu, Figma, PenTool, Github, Briefcase, GraduationCapIcon, Download, Mail, Linkedin } from 'lucide-react'
 import MyBounceLoader from './components/BounceLoader.js'
-
 import AnimatedTextComponent from "./components/AnimatedText.js"
+
+
 
 export function Component() {
   const cardData = [
@@ -26,20 +27,90 @@ export function Component() {
   ];
 
   return (
-    <>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cardData.map((card, index) => (
-        <div key={index} className="bg-glass border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md overflow-hidden">
-          <div className="px-8 py-7">
-            <h3 className="text-2xl text-white font-semibold mb-2">{card.title}</h3>
-            <AnimatedTextComponent className="text-lg font-source-code-pro font-bold text-primary mb-4"
-              text={card.subtitle || "Default Subtitle"} />
-            <p className="text-white text-opacity-70">{card.content}</p>
-          </div>
-        </div>
+        <Card key={index} card={card} />
       ))}
-    </>
+    </div>
   );
 }
+
+function Card({ card }) {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isNear, setIsNear] = useState(false);
+  const cardRef = useRef(null);
+
+  // Track global mouse position
+  useEffect(() => {
+    const handleGlobalMouseMove = (event) => {
+      if (cardRef.current) {
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = event.clientX - rect.left; // X position relative to the card
+        const y = event.clientY - rect.top; // Y position relative to the card
+
+        // Update mouse position
+        setMousePosition({ x, y });
+
+        // Check if the mouse is near the card
+        const proximityThreshold = 100; // Adjust this value to control the proximity range
+        const isNearCard =
+          event.clientX > rect.left - proximityThreshold &&
+          event.clientX < rect.right + proximityThreshold &&
+          event.clientY > rect.top - proximityThreshold &&
+          event.clientY < rect.bottom + proximityThreshold;
+
+        setIsNear(isNearCard);
+      }
+    };
+
+    // Add global mousemove listener
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+
+    // Cleanup listener
+    return () => {
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className="group relative overflow-hidden p-[1px] bg-gray-800 bg-opacity-20 rounded-lg transition-all duration-300 ease-in-out w-full sm:w-96 lg:w-auto lg:flex-1"
+      style={{ transform: 'translate3d(0, 0, 0)' }}
+    >
+      {/* Blob Element */}
+      <div
+        className={`absolute opacity-0 ${
+          isNear ? 'opacity-100' : 'group-hover:opacity-100'
+        } transition-opacity duration-300 ease-in-out blur-2xl w-64 h-64 bg-white bg-opacity-50 rounded-full`}
+        style={{
+          top: `${mousePosition.y}px`,
+          left: `${mousePosition.x}px`,
+          transform: `translate(-50%, -50%)`,
+          zIndex: -1,
+        }}
+      ></div>
+
+      {/* Fake Blob Element */}
+      <div
+        className="absolute opacity-0 w-52 h-52 rounded-full"
+        style={{ zIndex: -1 }}
+      ></div>
+
+      {/* Inner Content */}
+      <div className="relative p-6 bg-glass border bg-opacity-70 border-white border-opacity-10 text-white rounded-lg shadow-md  h-full rounded-lg transition-all duration-300 ease-in-out group-hover:bg-opacity-40">
+        <h3 className="text-2xl font-semibold text-white mb-2">{card.title}</h3>
+        <AnimatedTextComponent
+          className="text-lg font-source-code-pro font-bold text-primary mb-4"
+          text={card.subtitle || "Default Subtitle"}
+        />
+        <p className="text-white text-opacity-70">{card.content}</p>
+      </div>
+    </div>
+  );
+}
+
+
 export function ProfessionalSkills() {
   const skillCategories = [
     {
@@ -454,7 +525,7 @@ function App() {
             <section className="py-16">
               <h2 className="text-3xl text-white font-bold text-center mb-12">WHAT I DO</h2>
               <div className='container'>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="">
                   <Component />
                 </div>
               </div>
