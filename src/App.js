@@ -176,7 +176,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Nationality predictor',
+    title: 'Nationality Predictor',
     category: 'WEB-APP',
     image: '/images/projects/nationality-predictor.png',
     description: 'A sleek web app that predicts nationalities based on names, featuring real-time probability scores and animated visualizations.',
@@ -320,7 +320,19 @@ function Resume() {
     {
       title: "Software developer",
       company: "Promilezi",
-      date: "2024(current) - 6 months",
+      date: (() => {
+        const startDate = new Date('2024-05-01');
+        const today = new Date();
+        const months = (today.getFullYear() - startDate.getFullYear()) * 12 + 
+                      (today.getMonth() - startDate.getMonth());
+        const years = Math.floor(months / 12);
+        const remainingMonths = months % 12;
+        
+        if (years > 0) {
+          return `${years} year${years > 1 ? 's' : ''} ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+        }
+        return `2024 May(current) - ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+      })(),
       description: "Started as a junior developer, working on front-end development for web applications.",
       skills: ["Laravel", "NextJS", "Figma", "MySQL", "Tailwind"]
     },
