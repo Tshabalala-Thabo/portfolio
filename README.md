@@ -1,4 +1,4 @@
-# React Portfolio
+# Portfolio
 
 A modern, responsive portfolio website built with React, featuring a clean design, animated components, and showcasing professional experience and projects.
 
@@ -17,7 +17,7 @@ A modern, responsive portfolio website built with React, featuring a clean desig
 
 ## Technologies Used
 
-- React.js
+- Next.js
 - Tailwind CSS
 - Framer Motion
 - Headless UI
