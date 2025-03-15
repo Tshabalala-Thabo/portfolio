@@ -210,16 +210,15 @@ const projects = [
     description: 'Crafted an elegant wine website for enthusiasts to explore wines.',
     website: 'https://mrn-b453f.vercel.app',
   },
-  // {
-  //   id: 6,
-  //   title: 'Restaurant Booking App',
-  //   category: 'MOBILE-APP',
-  //   image: '/images/projects/tmsystem.png',
-  //   description: 'User-friendly mobile app for booking restaurant tables, viewing menus, and managing reservations.',
-  //   github: 'https://github.com/yourusername/tm-system',
-  //   website: 'https://tmsystem.com',
-  //   figma: 'https://figma.com/file/blockfirm',
-  // },
+  {
+    id: 6,
+    title: 'Boii Teddy',
+    category: 'WEB-APP',
+    image: '/images/projects/boiiteddy.png',
+    description: 'A React-based music player web app for artist Boii Teddy, featuring track playback, social links, and smooth user experience.',
+    github: 'https://github.com/Tshabalala-Thabo/boy-teddy-react.git',
+    website: 'https://boiiteddy.vercel.app/',
+  },
 ]
 
 const categories = ['ALL', 'WEB-APP', 'MOBILE-APP', 'WEBSITE', 'LOGO']
