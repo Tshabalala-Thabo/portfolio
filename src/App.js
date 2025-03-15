@@ -174,16 +174,15 @@ const projects = [
     github: 'https://github.com/Tshabalala-Thabo/TenantManagementSystem',
     figma: 'https://www.figma.com/proto/B61Ppmehgkogvp84zrOHkx/Tenant-Management-System?node-id=1-2&starting-point-node-id=1%3A2&t=oWnFpvzlhwP0GhV1-1',
   },
-  // {
-  //   id: 2,
-  //   title: 'Block Firm Enterprise',
-  //   category: 'WEBSITE',
-  //   image: '/images/projects/bfe.png',
-  //   description: 'Mobile app for tracking workouts, nutrition, and personal fitness goals with data visualization.',
-  //   github: 'https://github.com/yourusername/tm-system',
-  //   website: 'https://tmsystem.com',
-  //   figma: 'https://figma.com/file/blockfirm',
-  // },
+  {
+    id: 2,
+    title: 'Nationality Predictor',
+    category: 'WEB-APP',
+    image: '/images/projects/nationality-predictor.png',
+    description: 'A sleek web app that predicts nationalities based on names, featuring real-time probability scores and animated visualizations.',
+    github: 'https://github.com/Tshabalala-Thabo/nationality-predictor',
+    website: 'https://nationality-predictor.vercel.app/',
+  },
   {
     id: 3,
     title: 'Danny Niches',
@@ -321,7 +320,19 @@ function Resume() {
     {
       title: "Software developer",
       company: "Promilezi",
-      date: "2024(current) - 6 months",
+      date: (() => {
+        const startDate = new Date('2024-05-01');
+        const today = new Date();
+        const months = (today.getFullYear() - startDate.getFullYear()) * 12 + 
+                      (today.getMonth() - startDate.getMonth());
+        const years = Math.floor(months / 12);
+        const remainingMonths = months % 12;
+        
+        if (years > 0) {
+          return `${years} year${years > 1 ? 's' : ''} ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+        }
+        return `2024 May(current) - ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+      })(),
       description: "Started as a junior developer, working on front-end development for web applications.",
       skills: ["Laravel", "NextJS", "Figma", "MySQL", "Tailwind"]
     },
@@ -486,7 +497,7 @@ function App() {
                   />
                   <div className="absolute bottom-12  md:bottom-16 sm:bottom-24 md:bottom-32 -left-24 lg:-left-9 sm:-left-10 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
                     <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
-                      1 <span className="text-primary">+</span>
+                      {Math.floor((new Date() - new Date('2023-10-01')) / (1000 * 60 * 60 * 24 * 365))} <span className="text-primary">+</span>
                     </h1>
                     <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
                       <p>YEARS OF</p>
@@ -495,7 +506,7 @@ function App() {
                   </div>
                   <div className="absolute bottom-4 sm:bottom-8 md:bottom-16 -right-24 lg:right-0 flex items-center border border-white border-opacity-70 text-white rounded-md p-2 bg-glass bg-opacity-70">
                     <h1 className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
-                      3 <span className="text-primary">+</span>
+                    {projects.filter(project => !project.hidden).length} <span className="text-primary">+</span>
                     </h1>
                     <div className="text-xs sm:text-sm font-bold ml-2 sm:ml-4">
                       <p>PERSONAL</p>
