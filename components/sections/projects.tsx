@@ -3,7 +3,7 @@
 import { useState } from "react"
 import ProjectCard from "../project-card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Separator } from "@/components/ui/separator"
+// import { Separator } from "@/components/ui/separator"
 import { motion } from "framer-motion"
 import { projects, categories } from "@/data/projects"
 
@@ -16,14 +16,14 @@ export default function Projects() {
   return (
     <section id="projects" className="py-16 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
       <div className="text-center mb-8">
-        <h2 className="text-3xl md:text-4xl font-bold">My Projects</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto mt-2">
+        <h2 className="text-3xl text-white md:text-4xl font-bold">My Projects</h2>
+        {/* <p className="text-muted-foreground max-w-2xl mx-auto mt-2">
           Explore my portfolio of web applications and websites that showcase my skills in frontend and full-stack
           development.
-        </p>
+        </p> */}
       </div>
 
-      <Separator className="my-8" />
+      {/* <Separator className="my-8" /> */}
 
       {/* Category Tabs */}
       <Tabs defaultValue="ALL" value={activeCategory} onValueChange={setActiveCategory} className="w-full mb-10">

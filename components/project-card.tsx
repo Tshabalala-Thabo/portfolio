@@ -39,7 +39,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="h-full"
     >
       <Card
-        className="overflow-hidden bg-gray-800 bg-opacity-20 h-full flex flex-col border-white/10 hover:border-primary/50 transition-all duration-300"
+        className="overflow-hidden bg-background h-full flex flex-col border-white/10 hover:border-primary/50 transition-all duration-300"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
