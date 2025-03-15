@@ -50,19 +50,3 @@ npm start
 4. Open your browser and visit:
 http://localhost:3000
 
-## Getting Started
-
-react-portfolio/
-├── public/
-│   ├── images/
-│   │   ├── projects/
-│   │   ├── polygons.svg
-│   │   └── card-polygons.svg
-│   └── ThaboTshabalala_CV_10_2024.pdf
-├── src/
-│   ├── components/
-│   │   ├── AnimatedText.js
-│   │   └── BounceLoader.js
-│   ├── App.js
-│   └── index.js
-└── README.md
