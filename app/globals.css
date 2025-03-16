@@ -9,48 +9,65 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  } 
+  }
+  .section-alt {
+    background-color: hsl(var(--muted));
+  }
 }
 
 @layer base {
   :root {
-    --background: 120 20% 5%;
-    --muted: 120 15% 8%;
-    --muted-foreground: 120 10% 70%;
+    /* Light mode colors */
+    --background: 0 0% 100%; /* White */
+    --foreground: 120 20% 5%; /* Dark green */
+    --muted: 120 10% 95%; /* Light muted green */
+    --muted-foreground: 120 10% 40%; /* Darker muted green */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 120 20% 5%; /* Dark green */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 120 20% 5%; /* Dark green */
+    --primary: 120 100% 20%; /* Base primary color (#04A118) */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 120 10% 90%; /* Light secondary green */
+    --secondary-foreground: 120 20% 5%; /* Dark green */
+    --accent: 120 10% 90%; /* Light accent green */
+    --accent-foreground: 120 20% 5%; /* Dark green */
+    --destructive: 0 62.8% 30.6%; /* Red */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 120 10% 90%; /* Light border green */
+    --input: 120 10% 90%; /* Light input green */
+    --ring: 120 100% 20%; /* Primary ring color */
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+  .dark {
+    /* Dark mode colors */
+    --background: 120 20% 5%; /* Dark green (#0B130A) */
+    --foreground: 120 10% 95%; /* Light green */
+    --muted: 120 15% 8%; /* Dark muted green (#0D1C0C) */
+    --muted-foreground: 120 10% 70%; /* Light muted green */
+    --card: 120 20% 5%; /* Dark green */
+    --card-foreground: 120 10% 95%; /* Light green */
+    --popover: 120 20% 5%; /* Dark green */
+    --popover-foreground: 120 10% 95%; /* Light green */
+    --primary: 120 100% 20%; /* Base primary color (#04A118) */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 120 15% 8%; /* Dark secondary green */
+    --secondary-foreground: 120 10% 95%; /* Light green */
+    --accent: 120 15% 8%; /* Dark accent green */
+    --accent-foreground: 120 10% 95%; /* Light green */
+    --destructive: 0 62.8% 30.6%; /* Red */
+    --destructive-foreground: 0 0% 100%; /* White */
+    --border: 120 15% 8%; /* Dark border green */
+    --input: 120 15% 8%; /* Dark input green */
+    --ring: 120 100% 20%; /* Primary ring color */
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border; /* Apply border color */
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground; /* Apply background and text colors */
   }
 }
-

@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -20,27 +20,32 @@ const config = {
     },
     extend: {
       colors: {
-        background: '#0B120B',
+        /* Custom colors */
+        background: {
+          DEFAULT: 'hsl(var(--background))',
+          muted: 'hsl(var(--muted))',
+        },
         foreground: 'hsl(var(--foreground))',
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
-          background: '#0D130D',
         },
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         primary: {
-          DEFAULT: '#04A118',
-          light: '#05C11D',
-          100: '#0C1D0C',
-          200: '#0B120B',
-        },
-        glass: {
-          DEFAULT: '#0A100A',
-          light: '#00FF00',
-          100: '#00FF00',
-          200: '#00FF00',
+          DEFAULT: '#04A118', /* Base primary color */
+          foreground: 'hsl(var(--primary-foreground))',
+          50: '#E6F7E6', /* Lightest shade */
+          100: '#C2F0C2',
+          200: '#99E899',
+          300: '#70E070',
+          400: '#47D847',
+          500: '#04A118', /* Base */
+          600: '#038C15',
+          700: '#037812',
+          800: '#02640F',
+          900: '#01400A', /* Darkest shade */
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -49,10 +54,6 @@ const config = {
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
           DEFAULT: 'hsl(var(--accent))',
@@ -65,7 +66,7 @@ const config = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
-        }
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -89,7 +90,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
-
+export default config;
