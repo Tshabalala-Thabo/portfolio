@@ -38,7 +38,7 @@ export function ImageGallery({ images, title, open, onOpenChange }: ImageGallery
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-3xl p-0 overflow-hidden bg-background" onKeyDown={handleKeyDown} tabIndex={0}>
+      <DialogContent className="sm:max-w-3xl p-0 overflow-hidden bg-background" onKeyDown={handleKeyDown} hideCloseButton={true} tabIndex={0}>
         <div className="relative">
           <AspectRatio ratio={16 / 9} className="bg-muted">
             <Image
