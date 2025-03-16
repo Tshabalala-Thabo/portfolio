@@ -37,7 +37,7 @@ export function ProfessionalSkills() {
   ];
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-primary-100 text-white">
+    <section className="w-full py-12 md:py-24 lg:py-32 section-alt text-white">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-3xl text-center uppercase mb-12">
           Professional Skills

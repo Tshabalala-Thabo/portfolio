@@ -56,7 +56,7 @@ export function Resume() {
   ];
 
   return (
-    <section className="py-16 px-4 bg-primary-100">
+    <section className="py-16 px-4 section-alt">
       <h2 className="text-3xl text-white font-bold text-center mb-12">RESUME</h2>
       <div className="container mx-auto p-6">
         <div className="flex flex-col md:flex-row space-y-12 md:space-y-0 md:space-x-4">
