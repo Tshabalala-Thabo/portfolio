@@ -113,26 +113,56 @@ const projects = [
 ]
 
 function ScrollProgress() {
-  const [scrollProgress, setScrollProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const currentProgress = window.scrollY
-      const scrollPercentage = (currentProgress / totalHeight) * 100
-      setScrollProgress(Math.min(scrollPercentage, 100))
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  const { scrollYProgress } = useScroll()
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
+  const width = useTransform(smoothProgress, [0, 1], ['0%', '100%'])
 
   return (
-    <div className="fixed top-0 left-0 w-full h-1 bg-transparent z-50 pointer-events-none">
-      <div
-        className="h-full bg-[#04A118] transition-all duration-150 ease-out"
-        style={{ width: `${scrollProgress}%` }}
-      />
+    <div className="fixed top-0 left-0 w-full h-1 z-50 pointer-events-none">
+      <svg
+        width="100%"
+        height="4"
+        className="absolute top-0 left-0"
+        style={{ transform: 'translateZ(0)' }}
+      >
+        <defs>
+          <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#04A118" stopOpacity="0.8" />
+            <stop offset="50%" stopColor="#10b981" stopOpacity="1" />
+            <stop offset="100%" stopColor="#04A118" stopOpacity="0.8" />
+          </linearGradient>
+          <filter id="progressGlow">
+            <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+            <feMerge> 
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/> 
+            </feMerge>
+          </filter>
+        </defs>
+        
+        {/* Background line */}
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="4"
+          fill="rgba(0,0,0,0.3)"
+        />
+        
+        {/* Progress line */}
+        <motion.rect
+          x="0"
+          y="0"
+          width={width}
+          height="4"
+          fill="url(#progressGradient)"
+          filter="url(#progressGlow)"
+        />
+      </svg>
     </div>
   )
 }
@@ -467,45 +497,52 @@ export default function Portfolio() {
               >
                 {/* Green Circle Background */}
                 <div className="relative">
-                  <div className="w-80 h-80 bg-[#04A118] rounded-full flex items-center justify-center relative">
+                  <div className="w-96 h-96 bg-[#04A118] rounded-full flex items-center justify-end relative">
                     {/* Avatar */}
-                    <div className="w-64 h-64 relative">
-                      <Image src="/avatar.png" alt="Thabo Tshabalala Avatar" fill className="object-contain" />
+                    <div className="absolute bottom-0 w-full  h-auto">
+                      <Image
+                        src="/images/profile.png"
+                        alt="Thabo Tshabalala Avatar"
+                        width={384} // This should match w-96 (384px)
+                        height={0} // Set to 0 for auto height
+                        className="w-full h-auto rounded-b-full object-contain"
+                        style={{ height: 'auto' }}
+                      />
                     </div>
                   </div>
 
                   {/* Floating Stats */}
                   <motion.div
-                    className="absolute -top-4 -left-8"
+                    className="absolute bottom-24 -left-16"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
                     <Card className="bg-black/80 backdrop-blur-md border border-[#04A118]/30 p-4">
                       <CardContent className="p-0 flex items-center gap-3">
-                        <div className="text-3xl font-bold text-white font-mono">1</div>
-                        <div className="text-[#04A118] text-2xl font-bold">+</div>
+                        <div className="text-4xl font-bold text-white font-mono">1</div>
+                        <div className="text-[#04A118] text-3xl font-bold">+</div>
                         <div>
-                          <div className="text-white font-semibold text-sm">YEARS OF</div>
-                          <div className="text-[#04A118] font-semibold text-sm">EXPERIENCE</div>
+                          <div className="text-white font-semibold text-base">YEARS OF</div>
+                          <div className="text-[#04A118] font-semibold text-base">EXPERIENCE</div>
                         </div>
                       </CardContent>
                     </Card>
                   </motion.div>
 
                   <motion.div
-                    className="absolute -bottom-8 -right-8"
+                    className="absolute bottom-4 -right-8"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
                   >
                     <Card className="bg-black/80 backdrop-blur-md border border-[#04A118]/30 p-4">
                       <CardContent className="p-0 flex items-center gap-3">
-                        <div className="text-3xl font-bold text-white font-mono">5</div>
-                        <div className="text-[#04A118] text-2xl font-bold">+</div>
+                        <div className="text-4xl font-bold text-white font-mono">5</div>
+                        <div className="text-[#04A118] text-3xl font-bold">+</div>
                         <div>
-                          <div className="text-white font-semibold text-sm">PERSONAL</div>
-                          <div className="text-[#04A118] font-semibold text-sm">PROJECTS</div>
+                          <div className="text-white font-semibold text-base">PERSONAL</div>
+                          <div className="text-[#04A118] font-semibold text-base">PROJECTS</div>
                         </div>
                       </CardContent>
                     </Card>
