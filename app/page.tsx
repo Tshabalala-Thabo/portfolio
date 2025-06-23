@@ -1,6 +1,9 @@
 "use client"
 
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
+import { ProjectData } from "@/types/project"
+import { projects } from "@/data/projects"
+import { Crown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -21,6 +24,8 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import ProjectCard from "@/components/project-card"
+import { ProjectImageModal } from "@/components/project-image-modal"
 import { useState, useEffect, useRef } from "react"
 
 const fadeInUp = {
@@ -65,53 +70,6 @@ const skills = [
   },
 ]
 
-const projects = [
-  {
-    title: "TM System",
-    description: "Landlord & tenant management system",
-    image: "/placeholder.svg?height=200&width=300",
-    links: {
-      github: "https://github.com/Tshabalala-Thabo/TenantManagementSystem",
-      figma: "https://www.figma.com/proto/B61Ppmehgkogvp84zrOHkx/Tenant-Management-System?node-id=1-2",
-    },
-  },
-  {
-    title: "Nationality Predictor",
-    description: "Name-to-country predictor with animated visualizations",
-    image: "/placeholder.svg?height=200&width=300",
-    links: {
-      github: "https://github.com/Tshabalala-Thabo/nationality-predictor",
-      live: "https://nationality-predictor.vercel.app/",
-    },
-  },
-  {
-    title: "Danny Niches",
-    description: "Corporate website",
-    image: "/placeholder.svg?height=200&width=300",
-    links: {
-      github: "https://github.com/Tshabalala-Thabo/danny-niches-react",
-      live: "https://dannyniches.co.za",
-    },
-  },
-  {
-    title: "Lagiva Vine",
-    description: "Elegant wine site",
-    image: "/placeholder.svg?height=200&width=300",
-    links: {
-      live: "https://mrn-b453f.vercel.app",
-    },
-  },
-  {
-    title: "Boii Teddy",
-    description: "Music player app for an artist",
-    image: "/placeholder.svg?height=200&width=300",
-    links: {
-      github: "https://github.com/Tshabalala-Thabo/boy-teddy-react.git",
-      live: "https://boiiteddy.vercel.app/",
-    },
-  },
-]
-
 function ScrollProgress() {
   const { scrollYProgress } = useScroll()
   const smoothProgress = useSpring(scrollYProgress, {
@@ -136,14 +94,14 @@ function ScrollProgress() {
             <stop offset="100%" stopColor="#04A118" stopOpacity="0.8" />
           </linearGradient>
           <filter id="progressGlow">
-            <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/> 
+            <feGaussianBlur stdDeviation="1" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
-        
+
         {/* Background line */}
         <rect
           x="0"
@@ -152,7 +110,7 @@ function ScrollProgress() {
           height="4"
           fill="rgba(0,0,0,0.3)"
         />
-        
+
         {/* Progress line */}
         <motion.rect
           x="0"
@@ -200,10 +158,6 @@ function TravelingDataPoints({ scrollProgress }: any) {
         r="3"
         fill="#04A118"
         filter="url(#nodeGlow)"
-        style={{
-          offsetDistance: dataPoint1,
-          offsetPath: "path('M 100 400 L 500 400 L 700 400 L 700 300')",
-        }}
       >
         <animateMotion dur="4s" repeatCount="indefinite" path="M 100 400 L 500 400 L 700 400 L 700 300" />
       </motion.circle>
@@ -212,10 +166,6 @@ function TravelingDataPoints({ scrollProgress }: any) {
         r="2"
         fill="#10b981"
         filter="url(#nodeGlow)"
-        style={{
-          offsetDistance: dataPoint2,
-          offsetPath: "path('M 300 200 L 600 200 L 600 500')",
-        }}
       >
         <animateMotion dur="3s" repeatCount="indefinite" path="M 300 200 L 600 200 L 600 500" />
       </motion.circle>
@@ -224,10 +174,6 @@ function TravelingDataPoints({ scrollProgress }: any) {
         r="2.5"
         fill="#059669"
         filter="url(#nodeGlow)"
-        style={{
-          offsetDistance: dataPoint3,
-          offsetPath: "path('M 800 100 L 800 300 L 1100 300')",
-        }}
       >
         <animateMotion dur="5s" repeatCount="indefinite" path="M 800 100 L 800 300 L 1100 300" />
       </motion.circle>
@@ -240,6 +186,13 @@ export default function Portfolio() {
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
+  })
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean
+    project: ProjectData | null
+  }>({
+    isOpen: false,
+    project: null,
   })
 
   // Transform scroll progress into animation phases
@@ -254,6 +207,15 @@ export default function Portfolio() {
   const phase2Spring = useSpring(phase2Progress, springConfig)
   const phase3Spring = useSpring(phase3Progress, springConfig)
   const phase4Spring = useSpring(phase4Progress, springConfig)
+
+  const openModal = (project: ProjectData) => {
+    setModalState({ isOpen: true, project })
+  }
+
+  const closeModal = () => {
+    setModalState({ isOpen: false, project: null })
+  }
+
 
   return (
     <div ref={containerRef} className="relative min-h-screen bg-[#0B120B] text-white overflow-hidden">
@@ -442,7 +404,7 @@ export default function Portfolio() {
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto w-full">
+          <div className="max-w-6xl mx-auto w-full">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
               <motion.div className="space-y-8" initial="initial" animate="animate" variants={staggerContainer}>
@@ -466,25 +428,42 @@ export default function Portfolio() {
                 </motion.div>
 
                 <motion.div className="flex items-center gap-6" variants={fadeInUp}>
-                  <Link href="https://github.com" className="text-gray-400 hover:text-[#04A118] transition-colors">
+                  <a
+                    href="https://github.com/Tshabalala-Thabo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#04A118] transition-colors"
+                  >
                     <Github className="w-6 h-6" />
-                  </Link>
-                  <Link href="https://linkedin.com" className="text-gray-400 hover:text-[#04A118] transition-colors">
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/thabo-tshabalala/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-[#04A118] transition-colors"
+                  >
                     <Linkedin className="w-6 h-6" />
-                  </Link>
+                  </a>
                 </motion.div>
 
                 <motion.div variants={fadeInUp}>
-                  <Button className="bg-[#04A118] hover:bg-[#04A118]/80 text-white px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path
-                        fillRule="evenodd"
-                        d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    Download CV
-                  </Button>
+                  <a
+                    href="/ThaboTshabalala_CV_10_2024.pdf"
+                    download
+                    className="inline-block"
+                  >
+                    <Button className="bg-[#04A118] hover:bg-[#04A118]/80 text-white px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fillRule="evenodd"
+                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      Download CV
+                    </Button>
+                  </a>
+
                 </motion.div>
               </motion.div>
 
@@ -518,7 +497,7 @@ export default function Portfolio() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
-                    <Card className="bg-black/80 backdrop-blur-md border border-[#04A118]/30 p-4">
+                    <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-4">
                       <CardContent className="p-0 flex items-center gap-3">
                         <div className="text-4xl font-bold text-white font-mono">1</div>
                         <div className="text-[#04A118] text-3xl font-bold">+</div>
@@ -536,7 +515,7 @@ export default function Portfolio() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
                   >
-                    <Card className="bg-black/80 backdrop-blur-md border border-[#04A118]/30 p-4">
+                    <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-4">
                       <CardContent className="p-0 flex items-center gap-3">
                         <div className="text-4xl font-bold text-white font-mono">5</div>
                         <div className="text-[#04A118] text-3xl font-bold">+</div>
@@ -805,138 +784,143 @@ export default function Portfolio() {
         </section>
 
         {/* Projects Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <motion.h2
-              className="text-4xl font-bold text-center mb-16 text-[#04A118]"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              Featured Projects
-            </motion.h2>
-
+        <section className="py-20">
+          <div className="container mx-auto px-4">
             <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              variants={staggerContainer}
+              variants={{
+                animate: {
+                  transition: {
+                    staggerChildren: 0.1,
+                  },
+                },
+              }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {projects.map((project, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ y: -10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <Card className="bg-white/5 backdrop-blur-md border border-white/10 overflow-hidden h-full hover:border-[#04A118]/30 transition-all duration-300">
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-semibold mb-2 font-mono text-[#04A118]">{project.title}</h3>
-                      <p className="text-gray-400 mb-4">{project.description}</p>
-                      <div className="flex gap-3">
-                        {project.links.github && (
-                          <Link
-                            href={project.links.github}
-                            className="inline-flex items-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono text-sm"
-                          >
-                            <Github className="w-4 h-4" />
-                            GitHub
-                          </Link>
-                        )}
-                        {project.links.figma && (
-                          <Link
-                            href={project.links.figma}
-                            className="inline-flex items-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono text-sm"
-                          >
-                            <Figma className="w-4 h-4" />
-                            Figma
-                          </Link>
-                        )}
-                        {project.links.live && (
-                          <Link
-                            href={project.links.live}
-                            className="inline-flex items-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono text-sm"
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                            Live
-                          </Link>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+              {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} onClick={() => openModal(project)}/>
               ))}
             </motion.div>
           </div>
         </section>
 
+        {/* Image Modal */}
+        {modalState.project && (
+          <ProjectImageModal
+            isOpen={modalState.isOpen}
+            onClose={closeModal}
+            images={modalState.project.images}
+            projectTitle={modalState.project.title}
+          />
+        )}
+
         {/* Contact Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2
-              className="text-4xl font-bold mb-16 text-[#04A118]"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Let's Connect
-            </motion.h2>
+        {/* Contact Section - Full Width Glass Background */}
+        <section className="relative">
+          {/* Full-width glass background */}
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border-t border-white/10"></div>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-8 justify-center items-center"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              <motion.div variants={fadeInUp}>
-                <Card className="bg-white/5 backdrop-blur-md border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300">
-                  <CardContent className="p-0 text-center">
-                    <Mail className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Email</h3>
-                    <Link
-                      href="mailto:your.email@example.com"
-                      className="text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono"
-                    >
-                      your.email@example.com
-                    </Link>
-                  </CardContent>
-                </Card>
-              </motion.div>
+          <div className="relative z-10 py-20 px-4">
+            <div className="max-w-6xl mx-auto">
+              <motion.h2
+                className="text-4xl font-bold text-center mb-16 text-[#04A118]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                Let's Connect
+              </motion.h2>
 
-              <motion.div variants={fadeInUp}>
-                <Card className="bg-white/5 backdrop-blur-md border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300">
-                  <CardContent className="p-0 text-center">
-                    <Linkedin className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">LinkedIn</h3>
-                    <Link
-                      href="https://linkedin.com/in/yourprofile"
-                      className="text-[#04A118] hover:text-[#04A118]/80 transition-colors"
-                    >
-                      Connect with me
-                    </Link>
-                  </CardContent>
-                </Card>
+              <motion.div
+                className="grid md:grid-cols-3 gap-8"
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+              >
+                {/* Email Card */}
+                <motion.div variants={fadeInUp}>
+                  <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
+                    <CardContent className="p-0 text-center">
+                      <Mail className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">Email</h3>
+                      <p className="text-gray-400 mb-4">Let's discuss your next project</p>
+                      <a
+                        href="mailto:47thabo@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono"
+                      >
+                        47thabo@gmail.com
+                      </a>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+                {/* LinkedIn Card */}
+                <motion.div variants={fadeInUp}>
+                  <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
+                    <CardContent className="p-0 text-center">
+                      <Linkedin className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">LinkedIn</h3>
+                      <p className="text-gray-400 mb-4">Professional networking</p>
+                      <a
+                        href="https://www.linkedin.com/in/thabo-tshabalala/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#04A118] hover:text-[#04A118]/80 transition-colors"
+                      >
+                        Connect with me
+                      </a>
+
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+                {/* Chess.com Card */}
+                <motion.div variants={fadeInUp}>
+                  <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
+                    <CardContent className="p-0 text-center">
+                      <div className="w-12 h-12 mx-auto mb-4 relative">
+                        <Crown className="w-12 h-12 text-[#04A118]" />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2">Chess Player?</h3>
+                      <p className="text-gray-400 mb-4">Let's play some matches!</p>
+                      <a
+                        href="https://link.chess.com/friend/VS1Niq"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-[#04A118] hover:bg-[#04A118]/80 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-mono text-sm"
+                      >
+                        <Crown className="w-4 h-4" />
+                        Challenge Me
+                      </a>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="py-8 px-4 border-t border-white/10">
-          <div className="max-w-6xl mx-auto text-center">
-            <p className="text-gray-400">© {new Date().getFullYear()} Thabo Tshabalala. All rights reserved.</p>
+        {/* Footer - Full Width Glass Background */}
+        <footer className="relative">
+          {/* Full-width glass background */}
+          <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border-t border-white/10"></div>
+
+          <div className="relative z-10 py-8 px-4">
+            <div className="max-w-6xl mx-auto">
+
+              {/* Bottom Copyright */}
+              <div className="text-center">
+                <p className="text-gray-400 font-mono">
+                  © {new Date().getFullYear()} Thabo Tshabalala. All rights reserved. | Built with{" "}
+                  <span className="text-[#04A118]">Next.js</span> & <span className="text-[#04A118]">Tailwind CSS</span>
+                </p>
+              </div>
+            </div>
           </div>
         </footer>
       </div>

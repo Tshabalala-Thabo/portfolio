@@ -2,15 +2,14 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink, Figma, Info } from "lucide-react"
 import { motion } from "framer-motion"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import Link from "next/link"
+import type { ProjectData } from "@/types/project"
+import { Github, Figma, ExternalLink, Images } from "lucide-react"
+
+
 
 interface Project {
   id: number
@@ -23,130 +22,86 @@ interface Project {
   figma?: string
 }
 
-interface ProjectCardProps {
-  project: Project
+type ProjectCardProps = {
+  project: ProjectData;
+  onClick?: (project: ProjectData) => void;
+};
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
 }
 
-export default function ProjectCard({ project }: ProjectCardProps) {
+export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -10 }}
-      className="h-full"
+      key={project.id}
+      variants={fadeInUp}
+      transition={{ type: "spring", stiffness: 300 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <Card
-        className="overflow-hidden bg-background h-full flex flex-col border-white/10 hover:border-primary/50 transition-all duration-300"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="relative overflow-hidden">
-          <AspectRatio ratio={16 / 9}>
-            <Image
-              src={project.image || "/placeholder.svg?height=300&width=400"}
-              alt={project.title}
-              fill
-              className={`object-cover transition-transform duration-500 ${isHovered ? "scale-110" : "scale-100"}`}
-            />
-          </AspectRatio>
-          <div className="absolute top-2 right-2">
-            <Badge variant="secondary" className="font-medium">
-              {project.category}
-            </Badge>
-          </div>
+      <Card className="bg-white/5 backdrop-blur-md border border-white/10 overflow-hidden h-full hover:border-[#04A118]/30 transition-all duration-300">
+        <div className="relative h-48 overflow-hidden group">
+          <Image
+            src={project.images[0] || "/placeholder.svg"}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+          {/* Hover Button Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+          >
+            <Button
+              onClick={() => onClick?.(project)}
+              className="bg-[#04A118] hover:bg-[#04A118]/80 text-white font-mono gap-2 shadow-lg"
+            >
+              <Images className="w-4 h-4" />
+              View Gallery ({project.images.length})
+            </Button>
+          </motion.div>
         </div>
 
-        <CardHeader className="pb-2">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold">{project.title}</h3>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <HoverCard>
-                    <HoverCardTrigger asChild>
-                      <Button variant="ghost" size="icon" className="h-8 w-8">
-                        <Info className="h-4 w-4" />
-                        <span className="sr-only">Project details</span>
-                      </Button>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-80">
-                      <ScrollArea className="h-[200px] w-full rounded-md p-2">
-                        <h4 className="font-semibold mb-2">{project.title}</h4>
-                        <p className="text-sm text-muted-foreground">{project.description}</p>
-                      </ScrollArea>
-                    </HoverCardContent>
-                  </HoverCard>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View details</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+        <CardContent className="p-6">
+          <h3 className="text-xl font-semibold mb-2 font-mono text-[#04A118]">{project.title}</h3>
+          <p className="text-gray-400 mb-4">{project.description}</p>
+          <div className="flex gap-3">
+            {project.links.github && (
+              <Link
+                href={project.links.github}
+                className="inline-flex items-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono text-sm"
+              >
+                <Github className="w-4 h-4" />
+                GitHub
+              </Link>
+            )}
+            {project.links.figma && (
+              <Link
+                href={project.links.figma}
+                className="inline-flex items-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono text-sm"
+              >
+                <Figma className="w-4 h-4" />
+                Figma
+              </Link>
+            )}
+            {project.links.live && (
+              <Link
+                href={project.links.live}
+                className="inline-flex items-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono text-sm"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live
+              </Link>
+            )}
           </div>
-        </CardHeader>
-
-        <CardContent className="pb-2">
-          <p className="text-muted-foreground text-sm line-clamp-2">{project.description}</p>
         </CardContent>
-
-        <CardFooter className="flex flex-wrap gap-2 mt-auto pt-2">
-          {project.github && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-1 h-4 w-4" />
-                      GitHub
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View source code</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )}
-
-          {project.website && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.website} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-1 h-4 w-4" />
-                      Live
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Visit live site</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )}
-
-          {project.figma && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline" size="sm" asChild>
-                    <a href={project.figma} target="_blank" rel="noopener noreferrer">
-                      <Figma className="mr-1 h-4 w-4" />
-                      Figma
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>View design</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )}
-        </CardFooter>
       </Card>
     </motion.div>
   )
