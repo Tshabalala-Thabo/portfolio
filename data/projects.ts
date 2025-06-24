@@ -6,10 +6,13 @@ export const projects: ProjectData[] = [
     title: "TM System",
     category: "WEB-APP",
     images: [
-      "/images/projects/tmsystem.png",
-      "/images/projects/tmsystem-dashboard.png",
-      "/images/projects/tmsystem-tenants.png",
-      "/images/projects/tmsystem-properties.png",
+      "/images/projects/tmsystem/tmsystem.png",
+      "/images/projects/tmsystem/dashboard.jpeg",
+      "/images/projects/tmsystem/tenants.jpeg",
+      "/images/projects/tmsystem/invoice.jpeg",
+      "/images/projects/tmsystem/sites.jpeg",
+      "/images/projects/tmsystem/site.jpeg",
+      "/images/projects/tmsystem/applications.jpeg",
     ],
     description: "Web app for landlords to efficiently manage their properties and tenants.",
     links: {
@@ -20,12 +23,28 @@ export const projects: ProjectData[] = [
   },
   {
     id: 2,
+    title: "Lobster Clan",
+    category: "WEB-APP",
+    images: [
+      "/images/projects/lobsterclan/lc1.png",
+      "/images/projects/lobsterclan/lc2.png",
+      "/images/projects/lobsterclan/lc3.png",
+      "/images/projects/lobsterclan/lc4.png",
+      "/images/projects/lobsterclan/lc5.png",
+    ],
+    description: "Web app for landlords to efficiently manage their properties and tenants.",
+    links: {
+      github: "https://github.com/Tshabalala-Thabo/lobster-clan-react",
+      live:
+        "https://lobsterclan.vercel.app/",
+    },
+  },
+  {
+    id: 3,
     title: "Nationality Predictor",
     category: "WEB-APP",
     images: [
-      "/images/projects/nationality-predictor.png",
-      "/images/projects/nationality-predictor-results.png",
-      "/images/projects/nationality-predictor-mobile.png",
+      "/images/projects/nationality_predictor.png",
     ],
     description:
       "A sleek web app that predicts nationalities based on names, featuring real-time probability scores and animated visualizations.",
@@ -35,14 +54,15 @@ export const projects: ProjectData[] = [
     },
   },
   {
-    id: 3,
+    id: 4,
     title: "Danny Niches",
     category: "WEBSITE",
     images: [
-      "/images/projects/dn.png",
-      "/images/projects/dn-services.png",
-      "/images/projects/dn-portfolio.png",
-      "/images/projects/dn-contact.png",
+      "/images/projects/dannyniches/dn.png",
+      "/images/projects/dannyniches/dn2.png",
+      "/images/projects/dannyniches/dn3.png",
+      "/images/projects/dannyniches/dn4.png",
+      "/images/projects/dannyniches/dn5.png",
     ],
     description: "Responsive corporate website with modern design, showcasing company services and portfolio.",
     links: {
@@ -54,10 +74,14 @@ export const projects: ProjectData[] = [
     id: 5,
     title: "Lagiva Vine",
     category: "WEBSITE",
-    images: ["/images/projects/lv.png", "/images/projects/lv-wines.png", "/images/projects/lv-about.png"],
+    images: [
+      "/images/projects/lagivavine/lv1.png",
+      "/images/projects/lagivavine/lv2.png",
+      "/images/projects/lagivavine/lv3.png",
+    ],
     description: "Crafted an elegant wine website for enthusiasts to explore wines.",
     links: {
-      live: "https://mrn-b453f.vercel.app",
+      live: "https://lagivavinery.co.za",
     },
   },
   {
@@ -66,8 +90,6 @@ export const projects: ProjectData[] = [
     category: "WEB-APP",
     images: [
       "/images/projects/boiiteddy.png",
-      "/images/projects/boiiteddy-player.png",
-      "/images/projects/boiiteddy-playlist.png",
     ],
     description:
       "A React-based music player web app for artist Boii Teddy, featuring track playback, social links, and smooth user experience.",
