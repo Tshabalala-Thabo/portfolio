@@ -34,14 +34,14 @@ export function ProjectImageModal({ isOpen, onClose, images, projectTitle }: Pro
       <DialogContent className="max-w-4xl w-full bg-black/95 border-white/10 text-white">
         <DialogHeader className="flex flex-row items-center justify-between">
           <DialogTitle className="text-[#04A118] font-mono">{projectTitle}</DialogTitle>
-          <Button
+          {/* <Button
             variant="ghost"
             size="icon"
             onClick={onClose}
             className="text-white hover:text-[#04A118] hover:bg-white/10"
           >
             <X className="w-4 h-4" />
-          </Button>
+          </Button> */}
         </DialogHeader>
 
         <div className="relative">
