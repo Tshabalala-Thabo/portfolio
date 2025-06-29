@@ -499,13 +499,27 @@ export default function Portfolio() {
                   >
                     <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-4">
                       <CardContent className="p-0 flex items-center gap-3">
-                        <div className="text-4xl font-bold text-white font-mono">1</div>
+                        <div className="text-4xl font-bold text-white font-mono">
+                          {(() => {
+                            const from = new Date('2023-10-01');
+                            const now = new Date();
+                            let years = now.getFullYear() - from.getFullYear();
+                            if (
+                              now.getMonth() < from.getMonth() ||
+                              (now.getMonth() === from.getMonth() && now.getDate() < from.getDate())
+                            ) {
+                              years--;
+                            }
+                            return years;
+                          })()}
+                        </div>
                         <div className="text-[#04A118] text-3xl font-bold">+</div>
                         <div>
                           <div className="text-white font-semibold text-base">YEARS OF</div>
                           <div className="text-[#04A118] font-semibold text-base">EXPERIENCE</div>
                         </div>
                       </CardContent>
+
                     </Card>
                   </motion.div>
 
@@ -517,7 +531,7 @@ export default function Portfolio() {
                   >
                     <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-4">
                       <CardContent className="p-0 flex items-center gap-3">
-                        <div className="text-4xl font-bold text-white font-mono">5</div>
+                        <div className="text-4xl font-bold text-white font-mono">{projects.length}</div>
                         <div className="text-[#04A118] text-3xl font-bold">+</div>
                         <div>
                           <div className="text-white font-semibold text-base">PERSONAL</div>
@@ -786,7 +800,7 @@ export default function Portfolio() {
         {/* Projects Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-          <motion.h2
+            <motion.h2
               className="text-4xl font-bold text-center mb-16 text-[#04A118]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -794,7 +808,7 @@ export default function Portfolio() {
             >
               Featured Projects
             </motion.h2>
-            
+
             <motion.div
               initial="initial"
               whileInView="animate"
@@ -809,7 +823,7 @@ export default function Portfolio() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} onClick={() => openModal(project)}/>
+                <ProjectCard key={project.id} project={project} onClick={() => openModal(project)} />
               ))}
             </motion.div>
           </div>
