@@ -480,7 +480,7 @@ export default function Portfolio() {
                     {/* Avatar */}
                     <div className="absolute bottom-0 w-full  h-auto">
                       <Image
-                        src="/images/profile.png"
+                        src="/images/profile.webp"
                         alt="Thabo Tshabalala Avatar"
                         width={384} // This should match w-96 (384px)
                         height={0} // Set to 0 for auto height
@@ -798,8 +798,8 @@ export default function Portfolio() {
         </section>
 
         {/* Projects Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
             <motion.h2
               className="text-4xl font-bold text-center mb-16 text-[#04A118]"
               initial={{ opacity: 0, y: 30 }}
