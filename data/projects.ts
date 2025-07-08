@@ -44,7 +44,7 @@ export const projects: ProjectData[] = [
     title: "Nationality Predictor",
     category: "WEB-APP",
     images: [
-      "/images/projects/nationality_predictor.png",
+      "/images/projects/nationality_predictor.webp",
     ],
     description:
       "A sleek web app that predicts nationalities based on names, featuring real-time probability scores and animated visualizations.",
