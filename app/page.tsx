@@ -403,14 +403,14 @@ export default function Portfolio() {
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        <section className="min-h-screen flex items-center justify-center mt-6 md:mt-[0px] px-4 py-8 relative overflow-hidden">
           <div className="max-w-6xl mx-auto w-full">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Content */}
-              <motion.div className="space-y-8" initial="initial" animate="animate" variants={staggerContainer}>
+              <motion.div className="space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1" initial="initial" animate="animate" variants={staggerContainer}>
                 <motion.div variants={fadeInUp}>
-                  <p className="text-gray-400 text-lg mb-2 font-mono">HELLO, MY NAME IS</p>
-                  <h1 className="text-5xl md:text-6xl font-bold mb-4">
+                  <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-2 font-mono">HELLO, MY NAME IS</p>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                     <span className="text-[#04A118]">THABO</span>{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300 [-webkit-text-stroke:1px_white]">
                       TSHABALALA
@@ -419,15 +419,15 @@ export default function Portfolio() {
                 </motion.div>
 
                 <motion.div variants={fadeInUp}>
-                  <p className="text-xl text-gray-300 mb-6">
+                  <p className="text-lg sm:text-xl text-gray-300 mb-4 lg:mb-6">
                     I am: <span className="text-white font-semibold font-mono">Software Developer</span>
                   </p>
-                  <p className="text-gray-400 text-lg leading-relaxed max-w-lg">
+                  <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
                     I have competitive skills and a strong passion for my career. Always excited to work on a project.
                   </p>
                 </motion.div>
 
-                <motion.div className="flex items-center gap-6" variants={fadeInUp}>
+                <motion.div className="flex items-center justify-center lg:justify-start gap-6" variants={fadeInUp}>
                   <a
                     href="https://github.com/Tshabalala-Thabo"
                     target="_blank"
@@ -446,13 +446,13 @@ export default function Portfolio() {
                   </a>
                 </motion.div>
 
-                <motion.div variants={fadeInUp}>
+                <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start">
                   <a
                     href="/ThaboTshabalala_CV_10_2024.pdf"
                     download
                     className="inline-block"
                   >
-                    <Button className="bg-[#04A118] hover:bg-[#04A118]/80 text-white px-8 py-3 rounded-lg text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                    <Button className="bg-[#04A118] hover:bg-[#04A118]/80 text-white px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                         <path
                           fillRule="evenodd"
@@ -463,26 +463,25 @@ export default function Portfolio() {
                       Download CV
                     </Button>
                   </a>
-
                 </motion.div>
               </motion.div>
 
               {/* Right Content - Avatar and Stats */}
               <motion.div
-                className="relative flex justify-center lg:justify-end"
+                className="relative flex justify-center order-1 lg:order-2 lg:justify-end"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
                 {/* Green Circle Background */}
                 <div className="relative">
-                  <div className="w-96 h-96 bg-[#04A118] rounded-full flex items-center justify-end relative">
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-[#04A118] rounded-full flex items-center justify-end relative">
                     {/* Avatar */}
-                    <div className="absolute bottom-0 w-full  h-auto">
+                    <div className="absolute bottom-0 w-full h-auto">
                       <Image
                         src="/images/profile.webp"
                         alt="Thabo Tshabalala Avatar"
-                        width={384} // This should match w-96 (384px)
+                        width={384} // This should match lg:w-96 (384px)
                         height={0} // Set to 0 for auto height
                         className="w-full h-auto rounded-b-full object-contain"
                         style={{ height: 'auto' }}
@@ -492,14 +491,14 @@ export default function Portfolio() {
 
                   {/* Floating Stats */}
                   <motion.div
-                    className="absolute bottom-24 -left-16"
+                    className="absolute bottom-16 sm:bottom-20 lg:bottom-24 -left-8 sm:-left-12 lg:-left-16"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
                   >
-                    <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-4">
-                      <CardContent className="p-0 flex items-center gap-3">
-                        <div className="text-4xl font-bold text-white font-mono">
+                    <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-2 sm:p-3 lg:p-4">
+                      <CardContent className="p-0 flex items-center gap-2 sm:gap-3">
+                        <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-mono">
                           {(() => {
                             const from = new Date('2023-10-01');
                             const now = new Date();
@@ -513,29 +512,28 @@ export default function Portfolio() {
                             return years;
                           })()}
                         </div>
-                        <div className="text-[#04A118] text-3xl font-bold">+</div>
+                        <div className="text-[#04A118] text-xl sm:text-2xl lg:text-3xl font-bold">+</div>
                         <div>
-                          <div className="text-white font-semibold text-base">YEARS OF</div>
-                          <div className="text-[#04A118] font-semibold text-base">EXPERIENCE</div>
+                          <div className="text-white font-semibold text-xs sm:text-sm lg:text-base">YEARS OF</div>
+                          <div className="text-[#04A118] font-semibold text-xs sm:text-sm lg:text-base">EXPERIENCE</div>
                         </div>
                       </CardContent>
-
                     </Card>
                   </motion.div>
 
                   <motion.div
-                    className="absolute bottom-4 -right-8"
+                    className="absolute bottom-2 sm:bottom-3 lg:bottom-4 -right-4 sm:-right-6 lg:-right-8"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
                   >
-                    <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-4">
-                      <CardContent className="p-0 flex items-center gap-3">
-                        <div className="text-4xl font-bold text-white font-mono">{projects.length}</div>
-                        <div className="text-[#04A118] text-3xl font-bold">+</div>
+                    <Card className="bg-black/70 backdrop-blur-md border border-[#04A118]/30 p-2 sm:p-3 lg:p-4">
+                      <CardContent className="p-0 flex items-center gap-2 sm:gap-3">
+                        <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white font-mono">{projects.length}</div>
+                        <div className="text-[#04A118] text-xl sm:text-2xl lg:text-3xl font-bold">+</div>
                         <div>
-                          <div className="text-white font-semibold text-base">PERSONAL</div>
-                          <div className="text-[#04A118] font-semibold text-base">PROJECTS</div>
+                          <div className="text-white font-semibold text-xs sm:text-sm lg:text-base">PERSONAL</div>
+                          <div className="text-[#04A118] font-semibold text-xs sm:text-sm lg:text-base">PROJECTS</div>
                         </div>
                       </CardContent>
                     </Card>
