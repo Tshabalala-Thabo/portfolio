@@ -403,7 +403,7 @@ export default function Portfolio() {
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center mt-6 md:mt-[0px] px-4 py-8 relative overflow-hidden">
+        <section className="min-h-screen flex items-center justify-center mt-6 sm:mt-10 lg:mt-[0px] px-4 py-8 relative overflow-hidden">
           <div className="max-w-6xl mx-auto w-full">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Content */}
@@ -475,7 +475,7 @@ export default function Portfolio() {
               >
                 {/* Green Circle Background */}
                 <div className="relative">
-                  <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-[#04A118] rounded-full flex items-center justify-end relative">
+                  <div className="w-64 h-64 sm:w-80 sm:h-80 sm:mt-4 lg:w-96 lg:h-96 bg-[#04A118] rounded-full flex items-center justify-end relative">
                     {/* Avatar */}
                     <div className="absolute bottom-0 w-full h-auto">
                       <Image
@@ -491,7 +491,7 @@ export default function Portfolio() {
 
                   {/* Floating Stats */}
                   <motion.div
-                    className="absolute bottom-16 sm:bottom-20 lg:bottom-24 -left-8 sm:-left-12 lg:-left-16"
+                    className="absolute bottom-16 sm:bottom-20 lg:bottom-24 -left-6 xs:left-8 sm:-left-12 lg:-left-16"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.8 }}
