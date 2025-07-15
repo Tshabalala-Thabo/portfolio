@@ -910,7 +910,7 @@ export default function Portfolio() {
                       <h3 className="text-xl font-semibold mb-2">Chess Player?</h3>
                       <p className="text-gray-400 mb-4">Let's play some matches!</p>
                       <a
-                        href="https://link.chess.com/friend/VS1Niq"
+                        href="https://www.chess.com/member/Take_my_pawn_XD"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-[#04A118] hover:bg-[#04A118]/80 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-mono text-sm"
