@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Thabo Tshabalala | Software Developer',
-  description: 'Personal portfolio website of Thabo Tshabalala, a passionate Software Developer showcasing projects and professional experience.',
+  title: 'Thabo Tshabalala | Junior Software Developer',
+  description:
+    'Portfolio of Thabo Tshabalala, a junior software developer building secure Next.js, Laravel, MySQL, and financial-sector systems.',
   generator: 'Next.js',
 }
 

@@ -70,7 +70,12 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
         </div>
 
         <CardContent className="p-6">
-          <h3 className="text-xl font-semibold mb-2 font-mono text-[#04A118]">{project.title}</h3>
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h3 className="text-xl font-semibold font-mono text-[#04A118]">{project.title}</h3>
+            <span className="shrink-0 border border-[#04A118]/25 bg-[#04A118]/10 px-2 py-1 text-xs font-mono text-[#04A118]">
+              {project.category}
+            </span>
+          </div>
           <p className="text-gray-400 mb-4">{project.description}</p>
           <div className="flex gap-3">
             {project.links.github && (
@@ -106,4 +111,3 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     </motion.div>
   )
 }
-

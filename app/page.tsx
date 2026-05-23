@@ -8,25 +8,28 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
+  BriefcaseBusiness,
   Code2,
   Palette,
   Server,
   Database,
   Figma,
   Github,
-  ExternalLink,
   Mail,
   Linkedin,
   CheckCircle,
   Layers,
   Zap,
   Shield,
+  Cloud,
+  Download,
+  GraduationCap,
+  Workflow,
 } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
 import ProjectCard from "@/components/project-card"
 import { ProjectImageModal } from "@/components/project-image-modal"
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -46,26 +49,37 @@ const skills = [
   {
     category: "Frontend Development",
     items: [
-      { name: "Next.js", icon: Code2, description: "Full-stack React framework for production applications" },
-      { name: "React.js", icon: Code2, description: "Component-based library for building user interfaces" },
-      { name: "React Native", icon: Code2, description: "Cross-platform mobile app development" },
-      { name: "Tailwind CSS", icon: Palette, description: "Utility-first CSS framework for rapid styling" },
+      { name: "Next.js", icon: Code2, description: "Production interfaces for dashboards, portals, and SaaS workflows" },
+      { name: "TypeScript", icon: Code2, description: "Typed front-end logic for safer, more maintainable features" },
+      { name: "React Native", icon: Code2, description: "Cross-platform mobile app design and development" },
+      { name: "Tailwind CSS", icon: Palette, description: "Responsive UI systems with precise utility-first styling" },
     ],
   },
   {
     category: "Backend & Databases",
     items: [
-      { name: "Node.js", icon: Server, description: "JavaScript runtime for server-side development" },
-      { name: "Laravel (PHP)", icon: Server, description: "Elegant PHP framework for web applications" },
-      { name: "MySQL", icon: Database, description: "Relational database management system" },
-      { name: "MongoDB", icon: Database, description: "NoSQL document-based database" },
+      { name: "Laravel", icon: Server, description: "Secure APIs, Blade interfaces, and business workflow backends" },
+      { name: "Node.js", icon: Server, description: "JavaScript services and API integrations" },
+      { name: "MySQL/SQL", icon: Database, description: "Relational schemas, reporting queries, and data modelling" },
+      { name: "MongoDB", icon: Database, description: "Document data for flexible application features" },
     ],
   },
   {
-    category: "Design",
+    category: "Systems & Delivery",
     items: [
-      { name: "Figma", icon: Figma, description: "Collaborative interface design and prototyping" },
-      { name: "Adobe Illustrator", icon: Palette, description: "Vector graphics and illustration software" },
+      { name: "AWS", icon: Cloud, description: "Cloud-aware delivery for production web systems" },
+      { name: "Docker", icon: Server, description: "Local and deployment environments that stay reproducible" },
+      { name: "CI/CD", icon: Workflow, description: "Git-based release workflows and pipeline discipline" },
+      { name: "Playwright", icon: CheckCircle, description: "Browser testing for critical user journeys" },
+    ],
+  },
+  {
+    category: "Product & Collaboration",
+    items: [
+      { name: "Figma", icon: Figma, description: "Wireframes, prototypes, and clear handoff-ready UI decisions" },
+      { name: "Jira", icon: BriefcaseBusiness, description: "Sprint planning, issue tracking, and delivery visibility" },
+      { name: "Agile", icon: Layers, description: "Collaborative development with review and iteration built in" },
+      { name: "Postman", icon: Server, description: "API testing, validation, and integration debugging" },
     ],
   },
 ]
@@ -420,11 +434,24 @@ export default function Portfolio() {
 
                 <motion.div variants={fadeInUp}>
                   <p className="text-lg sm:text-xl text-gray-300 mb-4 lg:mb-6">
-                    I am: <span className="text-white font-semibold font-mono">Software Developer</span>
+                    I am: <span className="text-white font-semibold font-mono">Junior Software Developer</span>
                   </p>
                   <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                    I have competitive skills and a strong passion for my career. Always excited to work on a project.
+                    I build secure, scalable financial-sector systems with Next.js, Laravel, MySQL, role-based access
+                    control, multi-tenancy, payment gateways, and dynamic form workflows.
                   </p>
+                </motion.div>
+
+                <motion.div variants={fadeInUp} className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0">
+                  {[
+                    "Financial systems",
+                    "Multi-tenant SaaS",
+                    "Secure API delivery",
+                  ].map((item) => (
+                    <div key={item} className="border border-[#04A118]/25 bg-[#04A118]/10 px-3 py-2 text-sm text-gray-200">
+                      {item}
+                    </div>
+                  ))}
                 </motion.div>
 
                 <motion.div className="flex items-center justify-center lg:justify-start gap-6" variants={fadeInUp}>
@@ -448,18 +475,12 @@ export default function Portfolio() {
 
                 <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start">
                   <a
-                    href="/Thabo_Tshabalala_CV_09_2025.pdf"
+                    href="/Thabo_Tshabalala_CV_05_2026.pdf"
                     download
                     className="inline-block"
                   >
                     <Button className="bg-[#04A118] hover:bg-[#04A118]/80 text-white px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      <Download className="w-5 h-5" />
                       Download CV
                     </Button>
                   </a>
@@ -555,14 +576,14 @@ export default function Portfolio() {
               variants={staggerContainer}
             >
               <motion.div variants={fadeInUp}>
-                <h2 className="text-4xl font-bold mb-8 text-[#04A118]">What I Bring</h2>
+                <h2 className="text-4xl font-bold mb-8 text-[#04A118]">What I Build</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <CheckCircle className="w-6 h-6 text-[#04A118] mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Best Coding Standards</h3>
+                      <h3 className="text-xl font-semibold mb-2">Secure Business Logic</h3>
                       <p className="text-gray-400">
-                        Writing clean, maintainable, and scalable code following industry best practices.
+                        Designing role-based access, permissions, tenant boundaries, and guarded financial workflows.
                       </p>
                     </div>
                   </div>
@@ -570,10 +591,9 @@ export default function Portfolio() {
                   <div className="flex items-start gap-4">
                     <Palette className="w-6 h-6 text-[#04A118] mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Design Expertise</h3>
+                      <h3 className="text-xl font-semibold mb-2">Useful Product Interfaces</h3>
                       <p className="text-gray-400">
-                        Skilled in <span className="font-mono text-[#04A118]">Figma</span> for creating intuitive and
-                        visually appealing user interfaces.
+                        Turning complex data and custom forms into clear, responsive dashboards and app screens.
                       </p>
                     </div>
                   </div>
@@ -581,10 +601,11 @@ export default function Portfolio() {
                   <div className="flex items-start gap-4">
                     <Server className="w-6 h-6 text-[#04A118] mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">RESTful API Development</h3>
+                      <h3 className="text-xl font-semibold mb-2">Full-Stack Delivery</h3>
                       <p className="text-gray-400">
-                        Building and maintaining robust <span className="font-mono text-[#04A118]">APIs</span> for
-                        seamless data communication.
+                        Shipping with <span className="font-mono text-[#04A118]">Next.js</span>,{" "}
+                        <span className="font-mono text-[#04A118]">Laravel</span>,{" "}
+                        <span className="font-mono text-[#04A118]">MySQL</span>, and production-ready APIs.
                       </p>
                     </div>
                   </div>
@@ -592,9 +613,9 @@ export default function Portfolio() {
                   <div className="flex items-start gap-4">
                     <Shield className="w-6 h-6 text-[#04A118] mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Production Systems</h3>
+                      <h3 className="text-xl font-semibold mb-2">Team-Ready Engineering</h3>
                       <p className="text-gray-400">
-                        Deploying and maintaining reliable production systems with confidence.
+                        Working with Git, Jira, code reviews, sprint planning, and testing discipline.
                       </p>
                     </div>
                   </div>
@@ -608,22 +629,22 @@ export default function Portfolio() {
                       <div className="text-center">
                         <Layers className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
                         <h4 className="font-semibold">Frontend</h4>
-                        <p className="text-sm text-gray-400">Modern UI/UX</p>
+                        <p className="text-sm text-gray-400">Next.js & React</p>
                       </div>
                       <div className="text-center">
                         <Server className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
                         <h4 className="font-semibold">Backend</h4>
-                        <p className="text-sm text-gray-400">Robust APIs</p>
+                        <p className="text-sm text-gray-400">Laravel APIs</p>
                       </div>
                       <div className="text-center">
                         <Database className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
                         <h4 className="font-semibold">Database</h4>
-                        <p className="text-sm text-gray-400">Data Management</p>
+                        <p className="text-sm text-gray-400">MySQL/SQL</p>
                       </div>
                       <div className="text-center">
                         <Zap className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
-                        <h4 className="font-semibold">Performance</h4>
-                        <p className="text-sm text-gray-400">Optimized Solutions</p>
+                        <h4 className="font-semibold">Delivery</h4>
+                        <p className="text-sm text-gray-400">CI/CD & Git</p>
                       </div>
                     </div>
                   </CardContent>
@@ -703,19 +724,27 @@ export default function Portfolio() {
                 <Card className="bg-white/5 backdrop-blur-md border border-white/10">
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h3 className="text-xl font-semibold">Software Developer</h3>
+                      <h3 className="text-xl font-semibold">Junior Software Developer</h3>
                       <Badge className="bg-[#04A118]/20 text-[#04A118] border-[#04A118]/30 w-fit font-mono">
-                        May 2024 – Current
+                        May 2024 - Apr 2026
                       </Badge>
                     </div>
-                    <p className="text-[#04A118] font-medium mb-3">Promilezi</p>
-                    <p className="text-gray-400">
-                      Frontend development with <span className="font-mono text-[#04A118]">Laravel</span>,{" "}
-                      <span className="font-mono text-[#04A118]">Next.js</span>,{" "}
-                      <span className="font-mono text-[#04A118]">Figma</span>,{" "}
-                      <span className="font-mono text-[#04A118]">MySQL</span>,{" "}
-                      <span className="font-mono text-[#04A118]">Tailwind</span>
-                    </p>
+                    <p className="text-[#04A118] font-medium mb-3">Promilezi | Sunninghill, Gauteng</p>
+                    <ul className="space-y-3 text-gray-400">
+                      <li>Built and maintained financial-sector systems with tenant-based architecture.</li>
+                      <li>
+                        Developed responsive interfaces with <span className="font-mono text-[#04A118]">Next.js</span>,{" "}
+                        <span className="font-mono text-[#04A118]">TypeScript</span>,{" "}
+                        <span className="font-mono text-[#04A118]">Blade</span>, and{" "}
+                        <span className="font-mono text-[#04A118]">Tailwind CSS</span>.
+                      </li>
+                      <li>
+                        Implemented scalable back-end features with{" "}
+                        <span className="font-mono text-[#04A118]">Laravel</span> and{" "}
+                        <span className="font-mono text-[#04A118]">MySQL</span>, including secure workflow and data
+                        management patterns.
+                      </li>
+                    </ul>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -724,17 +753,20 @@ export default function Portfolio() {
                 <Card className="bg-white/5 backdrop-blur-md border border-white/10">
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h3 className="text-xl font-semibold">Intern</h3>
+                      <h3 className="text-xl font-semibold">Software Developer Intern</h3>
                       <Badge className="bg-white/10 text-gray-300 border-white/20 w-fit font-mono">
-                        2023 (10 months)
+                        Oct 2023 - Apr 2024
                       </Badge>
                     </div>
-                    <p className="text-[#04A118] font-medium mb-3">Ground up Grinders</p>
-                    <p className="text-gray-400">
-                      Worked with <span className="font-mono text-[#04A118]">React Native</span>,{" "}
-                      <span className="font-mono text-[#04A118]">Figma</span>,{" "}
-                      <span className="font-mono text-[#04A118]">Firebase</span>
-                    </p>
+                    <p className="text-[#04A118] font-medium mb-3">Ground Up Grinders | Midrand, Gauteng</p>
+                    <ul className="space-y-3 text-gray-400">
+                      <li>Led an 11-person intern team by organizing tasks and guiding delivery progress.</li>
+                      <li>Managed GitHub code reviews, branch merges, and version control practices.</li>
+                      <li>
+                        Designed mobile app wireframes and user flows in{" "}
+                        <span className="font-mono text-[#04A118]">Figma</span>.
+                      </li>
+                    </ul>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -768,15 +800,23 @@ export default function Portfolio() {
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <h3 className="text-xl font-semibold">Diploma in Software Development</h3>
                       <Badge className="bg-[#04A118]/20 text-[#04A118] border-[#04A118]/30 w-fit font-mono">
-                        Sept 2019 – June 2023
+                        University
                       </Badge>
                     </div>
                     <p className="text-[#04A118] font-medium mb-3">Tshwane University of Technology</p>
-                    <p className="text-gray-400">
-                      Focused on <span className="font-mono text-[#04A118]">C++</span>,{" "}
-                      <span className="font-mono text-[#04A118]">OracleSQL</span>, and{" "}
-                      <span className="font-mono text-[#04A118]">Algorithms</span>
-                    </p>
+                    <div className="grid sm:grid-cols-2 gap-3 text-gray-400">
+                      {[
+                        "Programming",
+                        "Mobile development",
+                        "Database development & administration",
+                        "Business analysis and modelling",
+                      ].map((course) => (
+                        <div key={course} className="flex items-start gap-3">
+                          <GraduationCap className="w-5 h-5 text-[#04A118] mt-0.5 flex-shrink-0" />
+                          <span>{course}</span>
+                        </div>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -788,6 +828,7 @@ export default function Portfolio() {
                       <h3 className="text-xl font-semibold">National Senior Certificate</h3>
                       <Badge className="bg-white/10 text-gray-300 border-white/20 w-fit font-mono">2016</Badge>
                     </div>
+                    <p className="text-[#04A118] font-medium">Kgadime-Matsepe Secondary School</p>
                   </CardContent>
                 </Card>
               </motion.div>

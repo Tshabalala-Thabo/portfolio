@@ -1,8 +1,38 @@
 import type { ProjectData } from "@/types/project"
 
 export const projects: ProjectData[] = [
+  // {
+  //   id: 1,
+  //   title: "ProSuite",
+  //   category: "WEB-APP",
+  //   images: [
+  //     "/images/projects/tmsystem/sites.webp",
+  //     "/images/projects/tmsystem/dashboard.webp",
+  //     "/images/projects/tmsystem/applications.webp",
+  //   ],
+  //   description:
+  //     "Enterprise management system experience focused on financial workflows, tenant-based architecture, and secure operational tooling.",
+  //   links: {
+  //     live: "https://app.prosuite.co.za",
+  //   },
+  // },
+  // {
+  //   id: 2,
+  //   title: "Multitenancy Scaffolding",
+  //   category: "WEB-APP",
+  //   images: [
+  //     "/images/projects/sites.webp",
+  //     "/images/projects/tmsystem/tenants.webp",
+  //     "/images/projects/tmsystem/site.webp",
+  //   ],
+  //   description:
+  //     "A multi-tenant skills showcase using Next.js, Laravel, MySQL, Spatie multitenancy, and roles and permissions.",
+  //   links: {
+  //     github: "https://github.com/Tshabalala-Thabo/multitenancy-scaffold-web-app",
+  //   },
+  // },
   {
-    id: 1,
+    id: 3,
     title: "TM System",
     category: "WEB-APP",
     images: [
@@ -14,15 +44,16 @@ export const projects: ProjectData[] = [
       "/images/projects/tmsystem/site.webp",
       "/images/projects/tmsystem/applications.webp",
     ],
-    description: "Web app for landlords to efficiently manage their properties and tenants.",
+    description:
+      "Property rental management system for landlords, tenants, invoices, sites, maintenance, and tenant applications.",
     links: {
-      github: "https://github.com/Tshabalala-Thabo/TenantManagementSystem",
+      github: "https://github.com/Tshabalala-Thabo/tm-system-api",
       figma:
         "https://www.figma.com/proto/B61Ppmehgkogvp84zrOHkx/Tenant-Management-System?node-id=1-2&starting-point-node-id=1%3A2&t=oWnFpvzlhwP0GhV1-1",
     },
   },
   {
-    id: 2,
+    id: 4,
     title: "Lobster Clan",
     category: "WEB-APP",
     images: [
@@ -32,7 +63,8 @@ export const projects: ProjectData[] = [
       "/images/projects/lobsterclan/lc4.webp",
       "/images/projects/lobsterclan/lc5.webp",
     ],
-    description: "Web app for landlords to efficiently manage their properties and tenants.",
+    description:
+      "Restaurant website with reservations, menu browsing, and a polished customer experience built with React, Node.js, and MongoDB.",
     links: {
       github: "https://github.com/Tshabalala-Thabo/lobster-clan-react",
       live:
@@ -40,7 +72,7 @@ export const projects: ProjectData[] = [
     },
   },
   {
-    id: 3,
+    id: 5,
     title: "Nationality Predictor",
     category: "WEB-APP",
     images: [
@@ -54,24 +86,7 @@ export const projects: ProjectData[] = [
     },
   },
   {
-    id: 4,
-    title: "Danny Niches",
-    category: "WEBSITE",
-    images: [
-      "/images/projects/dannyniches/dn.webp",
-      "/images/projects/dannyniches/dn2.webp",
-      "/images/projects/dannyniches/dn3.webp",
-      "/images/projects/dannyniches/dn4.webp",
-      "/images/projects/dannyniches/dn5.webp",
-    ],
-    description: "Responsive corporate website with modern design, showcasing company services and portfolio.",
-    links: {
-      github: "https://github.com/Tshabalala-Thabo/danny-niches-react",
-      live: "https://dannyniches.co.za",
-    },
-  },
-  {
-    id: 5,
+    id: 6,
     title: "Lagiva Vine",
     category: "WEBSITE",
     images: [
@@ -79,23 +94,20 @@ export const projects: ProjectData[] = [
       "/images/projects/lagivavine/lv2.webp",
       "/images/projects/lagivavine/lv3.webp",
     ],
-    description: "Crafted an elegant wine website for enthusiasts to explore wines.",
+    description: "Premium wine website with elegant motion, immersive product presentation, and responsive pages.",
     links: {
       live: "https://lagivavinery.co.za",
     },
   },
   {
-    id: 6,
-    title: "Boii Teddy",
-    category: "WEB-APP",
-    images: [
-      "/images/projects/boiiteddy.png",
-    ],
-    description:
-      "A React-based music player web app for artist Boii Teddy, featuring track playback, social links, and smooth user experience.",
+    id: 7,
+    title: "Portfolio",
+    category: "WEBSITE",
+    images: ["/images/screenshot.png"],
+    description: "Personal portfolio built with Next.js, Framer Motion, Tailwind CSS, and a custom animated circuit aesthetic.",
     links: {
-      github: "https://github.com/Tshabalala-Thabo/boy-teddy-react.git",
-      live: "https://boiiteddy.vercel.app/",
+      github: "https://github.com/Tshabalala-Thabo/portfolio",
+      live: "https://thabo-tshabalala.vercel.app",
     },
   },
 ]
