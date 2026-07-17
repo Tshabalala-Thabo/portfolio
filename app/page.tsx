@@ -8,11 +8,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
+  Award,
   BriefcaseBusiness,
   Code2,
   Palette,
   Server,
   Database,
+  ExternalLink,
   Figma,
   Github,
   Mail,
@@ -24,9 +26,11 @@ import {
   Cloud,
   Download,
   GraduationCap,
+  Terminal,
   Workflow,
 } from "lucide-react"
 import Image from "next/image"
+import Script from "next/script"
 import ProjectCard from "@/components/project-card"
 import { ProjectImageModal } from "@/components/project-image-modal"
 import { useState, useRef } from "react"
@@ -47,42 +51,67 @@ const staggerContainer = {
 
 const skills = [
   {
-    category: "Frontend Development",
+    category: "Core Stack",
     items: [
+      { name: "Laravel", icon: Server, description: "Secure APIs, business workflows, and financial-system backends" },
+      { name: "PHP", icon: Terminal, description: "Server-side application logic for Laravel-based systems" },
       { name: "Next.js", icon: Code2, description: "Production interfaces for dashboards, portals, and SaaS workflows" },
+      { name: "React", icon: Code2, description: "Component-driven interfaces for responsive web applications" },
       { name: "TypeScript", icon: Code2, description: "Typed front-end logic for safer, more maintainable features" },
-      { name: "React Native", icon: Code2, description: "Cross-platform mobile app design and development" },
-      { name: "Tailwind CSS", icon: Palette, description: "Responsive UI systems with precise utility-first styling" },
+      { name: "MySQL", icon: Database, description: "Relational schemas, reporting queries, and data modelling" },
+      { name: "REST APIs", icon: Workflow, description: "Structured API delivery for app workflows and integrations" },
     ],
   },
   {
-    category: "Backend & Databases",
+    category: "Cloud & Delivery",
     items: [
-      { name: "Laravel", icon: Server, description: "Secure APIs, Blade interfaces, and business workflow backends" },
-      { name: "Node.js", icon: Server, description: "JavaScript services and API integrations" },
-      { name: "MySQL/SQL", icon: Database, description: "Relational schemas, reporting queries, and data modelling" },
-      { name: "MongoDB", icon: Database, description: "Document data for flexible application features" },
-    ],
-  },
-  {
-    category: "Systems & Delivery",
-    items: [
-      { name: "AWS", icon: Cloud, description: "Cloud-aware delivery for production web systems" },
-      { name: "Docker", icon: Server, description: "Local and deployment environments that stay reproducible" },
+      { name: "AWS", icon: Cloud, description: "AWS fundamentals, cloud architecture, compute, storage, databases, security and deployment concepts" },
       { name: "CI/CD", icon: Workflow, description: "Git-based release workflows and pipeline discipline" },
+      { name: "Linux", icon: Terminal, description: "Command-line workflows for development and deployment environments" },
+      { name: "Git/GitHub", icon: Github, description: "Version control, pull requests, branch workflows, and collaboration" },
       { name: "Playwright", icon: CheckCircle, description: "Browser testing for critical user journeys" },
     ],
   },
   {
-    category: "Product & Collaboration",
+    category: "Additional Experience",
     items: [
+      { name: "Node.js", icon: Server, description: "JavaScript services and API integrations" },
+      { name: "MongoDB", icon: Database, description: "Document data for flexible application features" },
+      { name: "React Native", icon: Code2, description: "Cross-platform mobile app design and development" },
+      { name: "Tailwind CSS", icon: Palette, description: "Responsive UI systems with precise utility-first styling" },
       { name: "Figma", icon: Figma, description: "Wireframes, prototypes, and clear handoff-ready UI decisions" },
       { name: "Jira", icon: BriefcaseBusiness, description: "Sprint planning, issue tracking, and delivery visibility" },
-      { name: "Agile", icon: Layers, description: "Collaborative development with review and iteration built in" },
       { name: "Postman", icon: Server, description: "API testing, validation, and integration debugging" },
     ],
   },
 ]
+
+const credlyBadgeUrl = "https://www.credly.com/badges/c78c0a93-b2f5-461a-a278-d147a53ea9be"
+
+function CredlyBadge() {
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <div className="min-h-[270px] w-[150px] overflow-hidden">
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="c78c0a93-b2f5-461a-a278-d147a53ea9be"
+          data-share-badge-host="https://www.credly.com"
+        />
+      </div>
+      <Script src="https://cdn.credly.com/assets/utilities/embed.js" strategy="lazyOnload" />
+      <a
+        href={credlyBadgeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 text-sm font-mono text-[#04A118] transition-colors hover:text-[#04A118]/80"
+      >
+        Verify on Credly
+        <ExternalLink className="h-4 w-4" />
+      </a>
+    </div>
+  )
+}
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll()
@@ -434,12 +463,17 @@ export default function Portfolio() {
 
                 <motion.div variants={fadeInUp}>
                   <p className="text-lg sm:text-xl text-gray-300 mb-4 lg:mb-6">
-                    I am: <span className="text-white font-semibold font-mono">Junior Software Developer</span>
+                    I am: <span className="text-white font-semibold font-mono">Junior Full-Stack Software Developer</span>
                   </p>
                   <p className="text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                    I build secure, scalable financial-sector systems with Next.js, Laravel, MySQL, role-based access
-                    control, multi-tenancy, payment gateways, and dynamic form workflows.
+                    I build secure full-stack applications with Laravel, Next.js, TypeScript, MySQL and AWS fundamentals,
+                    with professional experience in financial-sector systems, multi-tenancy, role-based access control
+                    and business workflows.
                   </p>
+                  <div className="mt-4 inline-flex items-center gap-2 border border-[#04A118]/30 bg-[#04A118]/10 px-3 py-2 text-sm font-mono text-[#04A118]">
+                    <Award className="h-4 w-4" />
+                    AWS Certified Cloud Practitioner
+                  </div>
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0">
@@ -473,14 +507,14 @@ export default function Portfolio() {
                   </a>
                 </motion.div>
 
-                <motion.div variants={fadeInUp} className="flex justify-center lg:justify-start">
+                <motion.div variants={fadeInUp} className="flex flex-col justify-center items-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start">
                   <a
                     href="/Thabo_Tshabalala_CV_05_2026.pdf"
                     download
                     className="inline-block"
                   >
                     <Button className="bg-[#04A118] hover:bg-[#04A118]/80 text-white px-6 sm:px-8 py-3 rounded-lg text-base sm:text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                      <Download className="w-5 h-5" />
+                      <Download className="w-full lg:w-5 h-5" />
                       Download CV
                     </Button>
                   </a>
@@ -654,6 +688,61 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* Certifications Section */}
+        <section id="certifications" className="py-20 px-4 scroll-mt-10">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              className="mb-12 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="mb-3 text-sm font-mono uppercase tracking-[0.25em] text-gray-500">Verified cloud foundation</p>
+              <h2 className="text-4xl font-bold text-[#04A118]">Certifications</h2>
+            </motion.div>
+
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.div variants={fadeInUp}>
+                <Card className="overflow-hidden bg-white/5 backdrop-blur-md border border-white/10">
+                  <CardContent className="grid gap-8 p-6 sm:p-8 md:grid-cols-[220px_1fr] md:items-center">
+                    <div className="flex justify-center md:justify-start">
+                      <CredlyBadge />
+                    </div>
+
+                    <div>
+                      <div className="mb-4 inline-flex items-center gap-2 border border-[#04A118]/25 bg-[#04A118]/10 px-3 py-2 text-sm font-mono text-[#04A118]">
+                        <Cloud className="h-4 w-4" />
+                        Amazon Web Services
+                      </div>
+                      <h3 className="mb-4 text-2xl font-semibold text-white sm:text-3xl">AWS Certified Cloud Practitioner</h3>
+                      <p className="mb-6 max-w-2xl text-base leading-relaxed text-gray-400 sm:text-lg">
+                        Validated foundational knowledge of AWS Cloud concepts, services, security, architecture,
+                        pricing and support.
+                      </p>
+                      <div className="grid gap-3 text-sm text-gray-400 sm:grid-cols-2">
+                        <div className="border border-white/10 bg-black/20 p-4">
+                          <p className="mb-1 font-mono text-[#04A118]">Issuer</p>
+                          <p>Amazon Web Services</p>
+                        </div>
+                        <div className="border border-white/10 bg-black/20 p-4">
+                          <p className="mb-1 font-mono text-[#04A118]">Focus</p>
+                          <p>Cloud concepts, security, architecture and AWS services</p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Skills Section */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
@@ -724,25 +813,27 @@ export default function Portfolio() {
                 <Card className="bg-white/5 backdrop-blur-md border border-white/10">
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h3 className="text-xl font-semibold">Junior Software Developer</h3>
+                      <h3 className="text-xl font-semibold">Junior Full-Stack Software Developer</h3>
                       <Badge className="bg-[#04A118]/20 text-[#04A118] border-[#04A118]/30 w-fit font-mono">
-                        May 2024 - Apr 2026
+                        May 2024 - Present
                       </Badge>
                     </div>
                     <p className="text-[#04A118] font-medium mb-3">Promilezi | Sunninghill, Gauteng</p>
                     <ul className="space-y-3 text-gray-400">
-                      <li>Built and maintained financial-sector systems with tenant-based architecture.</li>
+                      <li>
+                        Developed Laravel and MySQL features for financial-sector systems with tenant-based architecture,
+                        configurable workflows, and secure tenant-separated data access.
+                      </li>
                       <li>
                         Developed responsive interfaces with <span className="font-mono text-[#04A118]">Next.js</span>,{" "}
                         <span className="font-mono text-[#04A118]">TypeScript</span>,{" "}
                         <span className="font-mono text-[#04A118]">Blade</span>, and{" "}
-                        <span className="font-mono text-[#04A118]">Tailwind CSS</span>.
+                        <span className="font-mono text-[#04A118]">Tailwind CSS</span> for operational dashboards and
+                        business workflow screens.
                       </li>
                       <li>
-                        Implemented scalable back-end features with{" "}
-                        <span className="font-mono text-[#04A118]">Laravel</span> and{" "}
-                        <span className="font-mono text-[#04A118]">MySQL</span>, including secure workflow and data
-                        management patterns.
+                        Supported role-based permissions, secure API behavior, payment-related workflows, and dynamic
+                        form experiences across full-stack application features.
                       </li>
                     </ul>
                   </CardContent>
@@ -837,7 +928,7 @@ export default function Portfolio() {
         </section>
 
         {/* Projects Section */}
-        <section className="py-20 px-4">
+        <section id="projects" className="py-20 px-4 scroll-mt-10">
           <div className="max-w-6xl mx-auto">
             <motion.h2
               className="text-4xl font-bold text-center mb-16 text-[#04A118]"
@@ -887,41 +978,47 @@ export default function Portfolio() {
           <div className="relative z-10 py-20 px-4">
             <div className="max-w-6xl mx-auto">
               <motion.h2
-                className="text-4xl font-bold text-center mb-16 text-[#04A118]"
+                className="text-4xl font-bold text-center mb-4 text-[#04A118]"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 Let's Connect
               </motion.h2>
+              <motion.p
+                className="mx-auto mb-12 max-w-3xl text-center text-base leading-relaxed text-gray-400 sm:text-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                Available for Junior Full-Stack and Backend Software Developer opportunities in Gauteng or remote.
+              </motion.p>
 
               <motion.div
-                className="grid md:grid-cols-3 gap-8"
+                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
                 variants={staggerContainer}
               >
-                {/* Email Card */}
                 <motion.div variants={fadeInUp}>
                   <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
                     <CardContent className="p-0 text-center">
                       <Mail className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
                       <h3 className="text-xl font-semibold mb-2">Email</h3>
-                      <p className="text-gray-400 mb-4">Let's discuss your next project</p>
+                      <p className="text-gray-400 mb-4">Start a conversation</p>
                       <a
                         href="mailto:47thabo@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono"
+                        className="inline-flex items-center justify-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono"
                       >
-                        47thabo@gmail.com
+                        Email Me
                       </a>
                     </CardContent>
                   </Card>
                 </motion.div>
 
-                {/* LinkedIn Card */}
                 <motion.div variants={fadeInUp}>
                   <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
                     <CardContent className="p-0 text-center">
@@ -934,34 +1031,68 @@ export default function Portfolio() {
                         rel="noopener noreferrer"
                         className="text-[#04A118] hover:text-[#04A118]/80 transition-colors"
                       >
-                        Connect with me
+                        LinkedIn
                       </a>
-
                     </CardContent>
                   </Card>
                 </motion.div>
 
-                {/* Chess.com Card */}
                 <motion.div variants={fadeInUp}>
                   <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
                     <CardContent className="p-0 text-center">
-                      <div className="w-12 h-12 mx-auto mb-4 relative">
-                        <Crown className="w-12 h-12 text-[#04A118]" />
-                      </div>
-                      <h3 className="text-xl font-semibold mb-2">Chess Player?</h3>
-                      <p className="text-gray-400 mb-4">Let's play some matches!</p>
+                      <Github className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">GitHub</h3>
+                      <p className="text-gray-400 mb-4">Code and project history</p>
                       <a
-                        href="https://www.chess.com/member/Take_my_pawn_XD"
+                        href="https://github.com/Tshabalala-Thabo"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-[#04A118] hover:bg-[#04A118]/80 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-mono text-sm"
+                        className="text-[#04A118] hover:text-[#04A118]/80 transition-colors"
                       >
-                        <Crown className="w-4 h-4" />
-                        Challenge Me
+                        GitHub
                       </a>
                     </CardContent>
                   </Card>
                 </motion.div>
+
+                <motion.div variants={fadeInUp}>
+                  <Card className="bg-white/10 backdrop-blur-xl border border-white/10 p-8 hover:border-[#04A118]/30 transition-all duration-300 h-full">
+                    <CardContent className="p-0 text-center">
+                      <Download className="w-12 h-12 text-[#04A118] mx-auto mb-4" />
+                      <h3 className="text-xl font-semibold mb-2">CV</h3>
+                      <p className="text-gray-400 mb-4">Download my latest CV</p>
+                      <a
+                        href="/Thabo_Tshabalala_CV_05_2026.pdf"
+                        download
+                        className="inline-flex items-center justify-center gap-2 text-[#04A118] hover:text-[#04A118]/80 transition-colors font-mono"
+                      >
+                        Download CV
+                      </a>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                className="mt-10 flex flex-col items-center justify-between gap-4 border border-white/10 bg-black/20 p-5 text-center sm:flex-row sm:text-left"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <div>
+                  <p className="font-mono text-sm uppercase tracking-[0.2em] text-gray-500">Outside of development</p>
+                  <p className="mt-1 text-gray-300">Chess is my preferred strategy break.</p>
+                </div>
+                <a
+                  href="https://www.chess.com/member/Take_my_pawn_XD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#04A118] hover:bg-[#04A118]/80 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-mono text-sm"
+                >
+                  <Crown className="w-4 h-4" />
+                  Chess.com
+                </a>
               </motion.div>
             </div>
           </div>
