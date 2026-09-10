@@ -509,7 +509,7 @@ export default function Portfolio() {
 
                 <motion.div variants={fadeInUp} className="flex flex-col justify-center items-center gap-3 sm:flex-row sm:flex-wrap lg:justify-start">
                   <a
-                    href="/Thabo_Tshabalala_CV_05_2026.pdf"
+                    href="/Thabo_Tshabalala_CV_2026_SEPT.pdf"
                     download
                     className="inline-block"
                   >
